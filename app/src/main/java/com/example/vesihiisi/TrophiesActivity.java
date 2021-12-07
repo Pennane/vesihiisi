@@ -1,10 +1,8 @@
 package com.example.vesihiisi;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-public class TrophiesActivity extends NavigationActivity {
+public class TrophiesActivity extends NavigationBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

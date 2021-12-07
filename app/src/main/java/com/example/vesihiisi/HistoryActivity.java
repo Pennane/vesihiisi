@@ -1,10 +1,8 @@
 package com.example.vesihiisi;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 
-public class HistoryActivity extends NavigationActivity {
+public class HistoryActivity extends NavigationBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
