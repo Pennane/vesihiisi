@@ -11,6 +11,7 @@ public class DayData {
     private int targetConsumption;
     private int age;
     private double weight;
+    private int maxConsumption;
 
     /**
      * Constructor for DayData objects.
@@ -25,10 +26,12 @@ public class DayData {
         this.age = age;
         this.weight = weight;
         this.targetConsumption = getTargetConsumption(age, weight, gender);
+        this.maxConsumption = 5000;
     }
 
     /**
-     * Calculate how much water should person drink per day in millilitres
+     * Calculate how much water should person drink per day in millilitres that is
+     * clamped between 1000 and 4000 ml.
      * <p>
      * The computed amount is loosely based on various sources from the internet.
      *
@@ -55,18 +58,23 @@ public class DayData {
             computedConsumption *= 1.015;
         }
 
-        int clampedComputedConspumption = (int) Math.max(Math.min(computedConsumption, 4), 1);
+        int clampedComputedConsumption = (int) Math.max(Math.min(computedConsumption, 4000), 1000);
 
-        return clampedComputedConspumption;
+        return clampedComputedConsumption;
     }
 
     /**
-     * Adds given amount to the daily consumption
+     * Adds given amount to the daily consumption.
+     * Consumption can not go over defined maxConsumption value.
      *
      * @param amount in millilitres
      */
     public void consume(int amount) {
-        this.consumption += amount;
+        if ((consumption + amount) > maxConsumption) {
+            consumption = maxConsumption;
+            return;
+        }
+        consumption += amount;
     }
 
     public Date getDate() {
@@ -130,6 +138,10 @@ public class DayData {
      * @param amount in millilitres
      */
     public void setConsumption(int amount) {
+        if (amount > maxConsumption) {
+            this.consumption = maxConsumption;
+            return;
+        }
         this.consumption = amount;
     }
 
