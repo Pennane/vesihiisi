@@ -42,7 +42,7 @@ public class MainActivity extends NavigationBarActivity {
 
         dayData = Global.readSpecificDayData(new Date());
         targetConsumption = findViewById(R.id.textView2);
-        targetConsumption.setText(Double.toString(dayData.getTargetConsumption()) + "ml");
+        targetConsumption.setText(Integer.toString(dayData.getTargetConsumption()) + "ml");
     }
 
 
@@ -61,7 +61,7 @@ public class MainActivity extends NavigationBarActivity {
      */
     public void updateConsumptionValue() {
         consumption = findViewById(R.id.textView);
-        consumption.setText(Double.toString(dayData.getConsumption()) + "ml");
+        consumption.setText(Integer.toString(dayData.getConsumption()) + "ml");
         Global.writeSpecificDayData(dayData, new Date());
     }
 

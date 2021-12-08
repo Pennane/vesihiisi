@@ -79,7 +79,7 @@ public class DayData {
      * @return target water consumption in millilitres
      */
     public int getTargetConsumption() {
-        return (int) consumption;
+        return targetConsumption;
     }
 
     /**
@@ -126,7 +126,7 @@ public class DayData {
      *
      * @return current daily consumption in millilitres
      */
-    public double getConsumption() {
+    public int getConsumption() {
         return this.consumption;
     }
 

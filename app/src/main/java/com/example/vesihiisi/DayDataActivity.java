@@ -28,8 +28,8 @@ public class DayDataActivity extends NavigationBarActivity {
         String date = intent.getStringExtra(HistoryActivity.DAY_DATA_DATE);
         DayData dayData = Global.readSpecificDayData(new Date(date));
 
-        targetConsumptionTextView.setText(Double.toString(dayData.getTargetConsumption())+"ml");
-        consumptionTextView.setText(Double.toString(dayData.getConsumption())+"ml");
+        targetConsumptionTextView.setText(Integer.toString(dayData.getTargetConsumption())+"ml");
+        consumptionTextView.setText(Integer.toString(dayData.getConsumption())+"ml");
         dateTextView.setText(dayData.getDate().toString());
     }
 }
