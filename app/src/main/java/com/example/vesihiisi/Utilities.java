@@ -1,11 +1,11 @@
 package com.example.vesihiisi;
 
 import android.app.Activity;
-import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 
@@ -43,5 +43,16 @@ public class Utilities {
 
         boolean sameDay = dateFormatter.format(date1).equals(dateFormatter.format(date2));
         return sameDay;
+    }
+
+    /**
+     * Get a random item from an ArrayList<></>
+     * @param arrayList ArrayList of any type
+     * @param <T> the item type of the ArrayList
+     * @return <T> an item of the received ArrayList
+     */
+    public static <T> T randomFromArrayList(ArrayList<T> arrayList) {
+        int index = (int)(Math.random() * arrayList.size());
+        return arrayList.get(index);
     }
 }
