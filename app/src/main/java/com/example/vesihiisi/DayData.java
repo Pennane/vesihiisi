@@ -15,7 +15,8 @@ public class DayData {
     /**
      * Constructor for DayData objects.
      * Calculates targetConsumption amount using local method getTargetConsumption
-     * @param age in years
+     *
+     * @param age    in years
      * @param weight in kilograms
      * @param gender as "male", "female" or "other"
      */
@@ -28,10 +29,10 @@ public class DayData {
 
     /**
      * Calculate how much water should person drink per day in millilitres
-     *
+     * <p>
      * The computed amount is loosely based on various sources from the internet.
      *
-     * @param age in years
+     * @param age    in years
      * @param weight in kilograms
      * @param gender as "male", "female" or "other"
      * @return target consumption in millilitres
@@ -39,7 +40,7 @@ public class DayData {
     private static int getTargetConsumption(int age, double weight, String gender) {
         double computedConsumption;
         if (age < 15) {
-            computedConsumption = (0.05*weight + 0.7) * 1000;
+            computedConsumption = (0.05 * weight + 0.7) * 1000;
         } else if (age > 40) {
             computedConsumption = (0.319 * weight + 0.0473) * 1000;
         } else {
@@ -49,18 +50,20 @@ public class DayData {
         if (gender.equals("male")) {
             computedConsumption *= 1.03;
         } else if (gender.equals("female")) {
-          //
+            //
         } else {
             computedConsumption *= 1.015;
         }
 
-        return (int) computedConsumption;
+        int clampedComputedConspumption = (int) Math.max(Math.min(computedConsumption, 4), 1);
+
+        return clampedComputedConspumption;
     }
 
     /**
      * Adds given amount to the daily consumption
-     * @param amount in millilitres
      *
+     * @param amount in millilitres
      */
     public void consume(int amount) {
         this.consumption += amount;
@@ -75,7 +78,6 @@ public class DayData {
     }
 
     /**
-     *
      * @return target water consumption in millilitres
      */
     public int getTargetConsumption() {
@@ -83,7 +85,6 @@ public class DayData {
     }
 
     /**
-     *
      * @param targetConsumption in millilitres
      */
     public void setTargetConsumption(int targetConsumption) {
@@ -91,7 +92,6 @@ public class DayData {
     }
 
     /**
-     *
      * @return age in years
      */
     public int getAge() {
@@ -99,7 +99,6 @@ public class DayData {
     }
 
     /**
-     *
      * @param age in years
      */
     public void setAge(int age) {
@@ -107,7 +106,6 @@ public class DayData {
     }
 
     /**
-     *
      * @return weight in kilograms
      */
     public double getWeight() {
@@ -115,7 +113,6 @@ public class DayData {
     }
 
     /**
-     *
      * @param weight in kilograms
      */
     public void setWeight(double weight) {
@@ -123,7 +120,6 @@ public class DayData {
     }
 
     /**
-     *
      * @return current daily consumption in millilitres
      */
     public int getConsumption() {
@@ -131,7 +127,6 @@ public class DayData {
     }
 
     /**
-     *
      * @param amount in millilitres
      */
     public void setConsumption(int amount) {
