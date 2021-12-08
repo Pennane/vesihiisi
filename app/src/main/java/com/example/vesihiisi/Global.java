@@ -17,16 +17,18 @@ import java.util.Optional;
 /**
  * A global singleton for shared preferences
  * and activity day data (which is also stored in shared preferences but as serialized JSON )
+ * <p>
  *
- * Inspiration for shared preferences singleton from
- * https://stackoverflow.com/questions/19612993/writing-singleton-class-to-manage-android-sharedpreferences
+ * @author arttupennanen
+ * @see <a href="https://stackoverflow.com/a/40347393/11212780">inspiration for shared preferences singleton</a>
  */
 public class Global {
     private static final String PREF_KEY = "GLOBAL_PREFERENCES";
     private static SharedPreferences preferences;
     private static Gson gson;
 
-    private Global() {}
+    private Global() {
+    }
 
     /**
      * Initialize json and shared preferences through static call.
@@ -35,11 +37,11 @@ public class Global {
      * @param context of MainActivity
      */
     public static void initialize(Context context) {
-       if (gson == null) {
-           gson = new Gson();
-       }
+        if (gson == null) {
+            gson = new Gson();
+        }
 
-        if(preferences == null) {
+        if (preferences == null) {
             preferences = context.getSharedPreferences(PREF_KEY, Activity.MODE_PRIVATE);
         }
 
@@ -59,7 +61,8 @@ public class Global {
             return new ArrayList<DayData>();
         }
 
-        Type listType = new TypeToken<ArrayList<DayData>>(){}.getType();
+        Type listType = new TypeToken<ArrayList<DayData>>() {
+        }.getType();
         ArrayList<DayData> dayDataList = gson.fromJson(json, listType);
         return dayDataList;
     }
@@ -79,7 +82,6 @@ public class Global {
      * If there is nothing stored for that date, creates an empty dayData object for it.
      *
      * @param date
-     *
      * @return DayData that shares the received date
      */
     public static DayData readSpecificDayData(Date date) {
@@ -129,7 +131,7 @@ public class Global {
     /**
      * Read stored string value
      *
-     * @param key that the value is stored behind
+     * @param key      that the value is stored behind
      * @param defValue default String value to fallback to
      * @return String
      */
@@ -140,7 +142,7 @@ public class Global {
     /**
      * Write string value to shared preferenes
      *
-     * @param key that the value should be stored behind
+     * @param key   that the value should be stored behind
      * @param value String value to write
      */
     public static void writePreference(String key, String value) {
@@ -152,7 +154,7 @@ public class Global {
     /**
      * Read stored integer value
      *
-     * @param key that the value is stored behind
+     * @param key      that the value is stored behind
      * @param defValue default integer value to fallback to
      * @return int
      */
@@ -163,7 +165,7 @@ public class Global {
     /**
      * Write integer value to shared preferenes
      *
-     * @param key that the value should be stored behind
+     * @param key   that the value should be stored behind
      * @param value integer value to write
      */
     public static void writePreference(String key, int value) {
@@ -174,6 +176,7 @@ public class Global {
 
     /**
      * Checks if given integer is a valid age
+     *
      * @param age
      * @return boolean
      */
@@ -183,15 +186,17 @@ public class Global {
 
     /**
      * Checks if given string is a valid gender
+     *
      * @param gender
      * @return boolean
      */
     public static boolean isValidGender(String gender) {
-        return  gender.equals("male") || gender.equals("female") || gender.equals("other");
+        return gender.equals("male") || gender.equals("female") || gender.equals("other");
     }
 
     /**
      * Checks if given integer is a valid weight
+     *
      * @param weight
      * @return boolean
      */

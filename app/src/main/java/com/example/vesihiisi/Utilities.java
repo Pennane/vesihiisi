@@ -16,10 +16,10 @@ public class Utilities {
 
     /**
      * A static utility method that hides the keyboard, provided that it is called from an Activity
+     *
      * @param activity
-     * @author https://stackoverflow.com/questions/4967418/using-shared-preferences-editor
-     * @author https://stackoverflow.com/users/3416196/howard
-     * @version 7-12-2021
+     * @author Reto Meier
+     * @see <a href="https://stackoverflow.com/a/17789187/11212780">How do you close/hide the Android soft keyboard programmatically?</a>
      */
     public static void hideKeyboard(Activity activity) {
         InputMethodManager imm = (InputMethodManager) activity.getSystemService(Activity.INPUT_METHOD_SERVICE);
@@ -34,6 +34,7 @@ public class Utilities {
 
     /**
      * Shows if two given dates exist on the same day
+     *
      * @param date1
      * @param date2
      * @return boolean
@@ -47,12 +48,13 @@ public class Utilities {
 
     /**
      * Get a random item from an ArrayList<></>
+     *
      * @param arrayList ArrayList of any type
-     * @param <T> the item type of the ArrayList
+     * @param <T>       the item type of the ArrayList
      * @return <T> an item of the received ArrayList
      */
     public static <T> T randomFromArrayList(ArrayList<T> arrayList) {
-        int index = (int)(Math.random() * arrayList.size());
+        int index = (int) (Math.random() * arrayList.size());
         return arrayList.get(index);
     }
 }

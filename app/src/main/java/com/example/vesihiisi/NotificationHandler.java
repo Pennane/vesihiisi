@@ -14,8 +14,11 @@ import androidx.core.app.NotificationCompat;
 /**
  * Handles notifications. Receives alerts from MainActivity
  * and turns them into notifications in createNotification.
+ * <p>
+ * Modified from stackoverflow
  *
- * Inspiration from https://stackoverflow.com/a/55910596/11212780
+ * @author Jimale Abdi
+ * @see <a href="https://stackoverflow.com/a/55910596/11212780">How to show a notification everyday at a certain time even when the app is closed?</a>
  */
 public class NotificationHandler extends BroadcastReceiver {
     private static final String NOTIFICATION_CHANNEL_ID = "10002";
@@ -23,6 +26,7 @@ public class NotificationHandler extends BroadcastReceiver {
 
     /**
      * Alarm handler
+     *
      * @param context
      * @param intent
      */
@@ -33,7 +37,7 @@ public class NotificationHandler extends BroadcastReceiver {
 
     /**
      * Creates and serves a hydration notification.
-     *
+     * <p>
      * Has a custom notification sound.
      *
      * @param context
@@ -43,7 +47,7 @@ public class NotificationHandler extends BroadcastReceiver {
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         PendingIntent resultPendingIntent = PendingIntent.getActivity(
                 context,
-                0 , intent,
+                0, intent,
                 PendingIntent.FLAG_UPDATE_CURRENT
         );
 
@@ -52,8 +56,8 @@ public class NotificationHandler extends BroadcastReceiver {
         builder.setContentTitle("Vesihiisi huomauttaa")
                 .setContentText("Juo vettä!")
                 .setAutoCancel(false)
-                .setVibrate(new long[] { 1000, 1000, 1000, 1000, 1000 })
-                .setSound(Uri.parse("android.resource://"+context.getPackageName()+"/"+R.raw.siuunotification))
+                .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000})
+                .setSound(Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.siuunotification))
                 .setContentIntent(resultPendingIntent);
 
 
