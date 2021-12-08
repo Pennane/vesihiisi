@@ -15,7 +15,7 @@ import androidx.core.app.NotificationCompat;
  * Handles notifications. Receives alerts from MainActivity
  * and turns them into notifications in createNotification.
  *
- * https://stackoverflow.com/a/55910596/11212780
+ * Inspiration from https://stackoverflow.com/a/55910596/11212780
  */
 public class NotificationHandler extends BroadcastReceiver {
     private static final String NOTIFICATION_CHANNEL_ID = "10002";

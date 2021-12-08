@@ -8,8 +8,10 @@ import android.os.SystemClock;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.Date;
+
 public class MainActivity extends NavigationBarActivity {
-    Counter waterCounter;
+    DayData dayData;
     TextView targetConsumption, consumption;
 
     @Override
@@ -20,54 +22,62 @@ public class MainActivity extends NavigationBarActivity {
         // Initialize global preferences
         Global.initialize(getApplicationContext());
 
-        // Redirect the user to settings if the settings are invalid or unset
-        tryRedirectToSettings();
         consumeWaterAlarmSchedule();
 
-        waterCounter = new Counter(Global.read("weight", 0), Global.read("age", 0));
-        targetConsumption = findViewById(R.id.textView2);
-        targetConsumption.setText(Double.toString(waterCounter.getTargetConsumption()) + "ml");
+        // Redirect the user to settings if the settings are invalid or unset
+        if (tryRedirectToSettings()) {
+            return;
+        }
 
+
+        dayData = Global.readSpecificDayData(new Date());
+        targetConsumption = findViewById(R.id.textView2);
+        targetConsumption.setText(Double.toString(dayData.getTargetConsumption()) + "ml");
     }
+
 
     @Override
     protected void onResume() {
         super.onResume();
-        tryRedirectToSettings();
-        waterCounter.setConsumption(Global.read("consumption", 0));
-        updateConsumptionViewValue();
+        if (tryRedirectToSettings()) {
+            return;
+        }
+        dayData = Global.readSpecificDayData(new Date());
+        updateConsumptionValue();
     }
 
 
-    public void updateConsumptionViewValue() {
+    public void updateConsumptionValue() {
         consumption = findViewById(R.id.textView);
-        consumption.setText(Double.toString(waterCounter.getConsume()) + "ml");
-        Global.write("consumption", (int) waterCounter.getConsume());
+        consumption.setText(Double.toString(dayData.getConsumption()) + "ml");
+        Global.writeSpecificDayData(dayData, new Date());
     }
 
     public void onGlassButtonClick(View view) {
-        waterCounter.consume(250);
-        updateConsumptionViewValue();
+        dayData.consume(250);
+        updateConsumptionValue();
     }
 
     public void onBottleButtonClick(View view) {
-        waterCounter.consume(500);
-        updateConsumptionViewValue();
+        dayData.consume(500);
+        updateConsumptionValue();
     }
 
     public void onJugButtonClick(View view) {
-        waterCounter.consume(1000);
-        updateConsumptionViewValue();
+        dayData.consume(1000);
+        updateConsumptionValue();
     }
 
     /**
      * Method that redirects the current activity to settings if saved preferences are invalid
      */
-    private void tryRedirectToSettings() {
-        if (!Global.isValidAge(Global.read("age", -1)) || !Global.isValidWeight(Global.read("weight", -1)) || !Global.isValidGender(Global.read("gender", "invalid"))) {
+    private Boolean tryRedirectToSettings() {
+        if (!Global.isValidAge(Global.readPreference("age", -1)) || !Global.isValidWeight(Global.readPreference("weight", -1)) || !Global.isValidGender(Global.readPreference("gender", "invalid"))) {
             Intent newActivity = new Intent(this, SettingsActivity.class);
             startActivity(newActivity);
+            return true;
         }
+        return false;
     }
 
     /**

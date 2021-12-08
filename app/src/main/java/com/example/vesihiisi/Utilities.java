@@ -1,8 +1,12 @@
 package com.example.vesihiisi;
 
 import android.app.Activity;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
 /**
@@ -26,5 +30,15 @@ public class Utilities {
             view = new View(activity);
         }
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+    /**
+     * Shows if two given dates exist on the same day
+     */
+    public static boolean isSameDay(Date date1, Date date2) {
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyyMMdd");
+
+        Boolean sameDay = dateFormatter.format(date1).equals(dateFormatter.format(date2));
+        return sameDay;
     }
 }

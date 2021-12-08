@@ -31,6 +31,7 @@ android {
 }
 
 dependencies {
+    implementation files('libs/gson-2.8.6.jar')
     compileOnly files("/Users/arttupennanen/Library/Android/sdk/platforms/android-31/android.jar")
     implementation 'androidx.appcompat:appcompat:1.4.0'
     implementation "androidx.core:core:1.6.0"
