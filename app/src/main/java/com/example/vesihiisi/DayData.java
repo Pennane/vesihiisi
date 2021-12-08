@@ -68,4 +68,9 @@ public class DayData {
     public void setConsumption(int amount) {
         this.consumption = amount;
     }
+
+    @Override
+    public String toString() {
+        return this.date.toString();
+    }
 }
