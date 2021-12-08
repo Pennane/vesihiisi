@@ -10,8 +10,7 @@ import android.widget.TextView;
 
 public class MainActivity extends NavigationBarActivity {
     Counter waterCounter;
-    TextView targetConsumption, consumption, message;
-    MotivationMessages motivationMessages;
+    TextView targetConsumption, consumption;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,11 +27,8 @@ public class MainActivity extends NavigationBarActivity {
         waterCounter = new Counter(Global.read("weight", 0), Global.read("age", 0));
         targetConsumption = findViewById(R.id.textView2);
         targetConsumption.setText(Double.toString(waterCounter.getTargetConsumption()) + "ml");
-        message = findViewById(R.id.textView4);
-        motivationMessages = new MotivationMessages();
-        message.setText(motivationMessages.getRandomMessage());
-    }
 
+    }
 
     @Override
     protected void onResume() {
@@ -40,11 +36,6 @@ public class MainActivity extends NavigationBarActivity {
         tryRedirectToSettings();
         waterCounter.setConsumption(Global.read("consumption", 0));
         updateConsumptionViewValue();
-    }
-    protected void onPause() {
-
-        super.onPause();
-        message.setText(motivationMessages.getRandomMessage());
     }
 
 

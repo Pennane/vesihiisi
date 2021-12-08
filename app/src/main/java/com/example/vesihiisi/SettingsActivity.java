@@ -3,7 +3,6 @@ import static com.example.vesihiisi.Utilities.hideKeyboard;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -31,9 +30,9 @@ public class SettingsActivity extends NavigationBarActivity {
         int selectedId = radioGroupGender.getCheckedRadioButtonId();
         radioButtonGender = (RadioButton) findViewById(selectedId);
 
-        gender = Global.read("gender","unset");
-        age = Global.read("age",0);
-        weight = Global.read("weight",0);
+        gender = Global.readPreference("gender","unset");
+        age = Global.readPreference("age",0);
+        weight = Global.readPreference("weight",0);
 
         editTextAge.setText(Integer.toString(age));
         editTextWeight.setText(Integer.toString(weight));
@@ -117,9 +116,9 @@ public class SettingsActivity extends NavigationBarActivity {
         }
 
         // Apply changes to the global shared preferences
-        Global.write("gender", gender);
-        Global.write("age", age);
-        Global.write("weight", weight);
+        Global.writePreference("gender", gender);
+        Global.writePreference("age", age);
+        Global.writePreference("weight", weight);
 
         // Show a toast as a confirmation message
         Context context = getApplicationContext();
