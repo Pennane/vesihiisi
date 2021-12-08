@@ -83,7 +83,11 @@ public class Global {
                 .findAny();
 
         if (!savedDayData.isPresent()) {
-            return new DayData(Global.readPreference("age", 30), Global.readPreference("weight", 70));
+            return new DayData(
+                    Global.readPreference("age", 30),
+                    Global.readPreference("weight", 70),
+                    Global.readPreference("gender", "invalid")
+            );
         }
         return savedDayData.get();
     }
