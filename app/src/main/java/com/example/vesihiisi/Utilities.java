@@ -34,11 +34,14 @@ public class Utilities {
 
     /**
      * Shows if two given dates exist on the same day
+     * @param date1
+     * @param date2
+     * @return boolean
      */
     public static boolean isSameDay(Date date1, Date date2) {
         SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyyMMdd");
 
-        Boolean sameDay = dateFormatter.format(date1).equals(dateFormatter.format(date2));
+        boolean sameDay = dateFormatter.format(date1).equals(dateFormatter.format(date2));
         return sameDay;
     }
 }

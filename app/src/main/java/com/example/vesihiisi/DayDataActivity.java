@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import java.util.Date;
 
+/**
+ * Activity with the purpose of showing details of one day of hydration history
+ */
 public class DayDataActivity extends NavigationBarActivity {
     TextView targetConsumptionTextView, consumptionTextView, dateTextView;
 

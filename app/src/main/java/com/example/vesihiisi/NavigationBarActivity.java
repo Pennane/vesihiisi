@@ -18,8 +18,8 @@ public abstract class NavigationBarActivity extends AppCompatActivity {
     }
 
     /**
-     * Hides the navigation bar from current activity.
-     * The space taken by the bar remains.
+     * Hides the navigation bar from the current activity.
+     * The space taken by the bar remains blank.
      */
     public void hideNavigationBar() {
         View view = findViewById(R.id.navigationBar);
@@ -29,7 +29,7 @@ public abstract class NavigationBarActivity extends AppCompatActivity {
     }
 
     /**
-     * Shows the navigation bar in current activity if hidden before
+     * Shows the navigation bar in the current activity if hidden before
      */
     public void showNavigationBar() {
         View view = findViewById(R.id.navigationBar);

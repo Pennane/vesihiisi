@@ -21,11 +21,23 @@ public class NotificationHandler extends BroadcastReceiver {
     private static final String NOTIFICATION_CHANNEL_ID = "10002";
     private static final String NOTIFICATION_CHANNEL_NAME = "WATER_NOTIFICATION";
 
+    /**
+     * Alarm handler
+     * @param context
+     * @param intent
+     */
     @Override
     public void onReceive(Context context, Intent intent) {
         createNotification(context);
     }
 
+    /**
+     * Creates and serves a hydration notification.
+     *
+     * Has a custom notification sound.
+     *
+     * @param context
+     */
     private void createNotification(Context context) {
         Intent intent = new Intent(context, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

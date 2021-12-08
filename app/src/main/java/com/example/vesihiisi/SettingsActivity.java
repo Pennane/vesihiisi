@@ -9,6 +9,10 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
+
+/**
+ * Activity for displaying and editing settings
+ */
 public class SettingsActivity extends NavigationBarActivity {
     private EditText editTextAge, editTextWeight;
     private RadioGroup radioGroupGender;
@@ -54,10 +58,11 @@ public class SettingsActivity extends NavigationBarActivity {
 
     /**
      * Checks if preferences stored in the object instance are valid.
-     * If any of the preferences are invalid, summons a toast.
-     * @return Boolean
+     * If any of the preferences are invalid, spawns a toast.
+     *
+     * @return boolean
      */
-    private Boolean isValidInput() {
+    private boolean isValidInput() {
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
         Toast toast;
@@ -82,7 +87,7 @@ public class SettingsActivity extends NavigationBarActivity {
     }
 
     /**
-     * Reads input from the activity and stores them into the object instance
+     * Reads input from the activity and stores those into the activity instance
      */
     private void readInput() {
 
@@ -102,7 +107,10 @@ public class SettingsActivity extends NavigationBarActivity {
     }
 
     /**
-     * Validates input and saves them into the shared preferences.
+     * Validates input and saves them into the global shared preferences.
+     *
+     * Summons toasts to show status
+     *
      * @param view
      */
     public void saveSettings(View view) {

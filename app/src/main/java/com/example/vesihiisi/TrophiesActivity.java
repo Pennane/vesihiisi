@@ -2,6 +2,10 @@ package com.example.vesihiisi;
 
 import android.os.Bundle;
 
+/**
+ * Activity for displaying trophies that are granted from
+ * continuous hydration.
+ */
 public class TrophiesActivity extends NavigationBarActivity {
 
     @Override

@@ -8,6 +8,9 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+/**
+ * Activity that displays stored hydration history as a basic list view
+ */
 public class HistoryActivity extends NavigationBarActivity {
 
     public static final String DAY_DATA_DATE = "com.example.vesihiisi.DAY_DATA_DATE";

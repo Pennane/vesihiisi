@@ -15,10 +15,11 @@ import java.util.Date;
 import java.util.Optional;
 
 /**
- * A global singleton for user preferences and activity day data (which is stored as JSON)
+ * A global singleton for shared preferences
+ * and activity day data (which is also stored in shared preferences but as serialized JSON )
  *
- * Inspiration for shared preferences
- * singleton from https://stackoverflow.com/questions/19612993/writing-singleton-class-to-manage-android-sharedpreferences
+ * Inspiration for shared preferences singleton from
+ * https://stackoverflow.com/questions/19612993/writing-singleton-class-to-manage-android-sharedpreferences
  */
 public class Global {
     private static final String PREF_KEY = "GLOBAL_PREFERENCES";
@@ -29,7 +30,9 @@ public class Global {
 
     /**
      * Initialize json and shared preferences through static call.
-     * @param context
+     * Has to be used before other methods of the class are to be used.
+     *
+     * @param context of MainActivity
      */
     public static void initialize(Context context) {
        if (gson == null) {
@@ -45,7 +48,8 @@ public class Global {
     /**
      * Reads stored day data JSON from shared preferences.
      * If there is no stored data, returns an empty ArrayList.
-     * @return
+     *
+     * @return complete ArrayList of stored DayDatas
      */
     public static ArrayList<DayData> readDayDataList() {
         String json = readPreference("dayDataHistory", "");
@@ -61,7 +65,8 @@ public class Global {
     }
 
     /**
-     * Overwrites stored JSON day data.
+     * Overwrites stored JSON DayData ArrayList.
+     *
      * @param dayDataList
      */
     public static void writeDayDataList(ArrayList<DayData> dayDataList) {
@@ -72,8 +77,10 @@ public class Global {
     /**
      * Returns a day data object that has the requested date associated with it.
      * If there is nothing stored for that date, creates an empty dayData object for it.
+     *
      * @param date
-     * @return
+     *
+     * @return DayData that shares the received date
      */
     public static DayData readSpecificDayData(Date date) {
         ArrayList<DayData> savedDayDataList = readDayDataList();
@@ -94,7 +101,8 @@ public class Global {
 
     /**
      * Overwrites dayData for a specific date.
-     * @param dayData
+     *
+     * @param dayData object to add or replace from the DayData storage
      * @param date
      */
     public static void writeSpecificDayData(DayData dayData, Date date) {
@@ -118,21 +126,47 @@ public class Global {
         writeDayDataList(savedDayDataList);
     }
 
+    /**
+     * Read stored string value
+     *
+     * @param key that the value is stored behind
+     * @param defValue default String value to fallback to
+     * @return String
+     */
     public static String readPreference(String key, String defValue) {
         return preferences.getString(key, defValue);
     }
 
+    /**
+     * Write string value to shared preferenes
+     *
+     * @param key that the value should be stored behind
+     * @param value String value to write
+     */
     public static void writePreference(String key, String value) {
         SharedPreferences.Editor prefsEditor = preferences.edit();
         prefsEditor.putString(key, value);
         prefsEditor.commit();
     }
 
-    public static Integer readPreference(String key, int defValue) {
+    /**
+     * Read stored integer value
+     *
+     * @param key that the value is stored behind
+     * @param defValue default integer value to fallback to
+     * @return int
+     */
+    public static int readPreference(String key, int defValue) {
         return preferences.getInt(key, defValue);
     }
 
-    public static void writePreference(String key, Integer value) {
+    /**
+     * Write integer value to shared preferenes
+     *
+     * @param key that the value should be stored behind
+     * @param value integer value to write
+     */
+    public static void writePreference(String key, int value) {
         SharedPreferences.Editor prefsEditor = preferences.edit();
         prefsEditor.putInt(key, value).commit();
     }
@@ -141,27 +175,27 @@ public class Global {
     /**
      * Checks if given integer is a valid age
      * @param age
-     * @return Boolean
+     * @return boolean
      */
-    public static Boolean isValidAge(int age) {
+    public static boolean isValidAge(int age) {
         return age > 0 && age < 120;
     }
 
     /**
      * Checks if given string is a valid gender
      * @param gender
-     * @return Boolean
+     * @return boolean
      */
-    public static Boolean isValidGender(String gender) {
+    public static boolean isValidGender(String gender) {
         return  gender.equals("male") || gender.equals("female") || gender.equals("other");
     }
 
     /**
      * Checks if given integer is a valid weight
      * @param weight
-     * @return Boolean
+     * @return boolean
      */
-    public static Boolean isValidWeight(int weight) {
+    public static boolean isValidWeight(int weight) {
         return weight > 0 && weight < 635;
     }
 }

@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import java.util.Date;
 
+/**
+ * Default Activity, the main screen of the application
+ */
 public class MainActivity extends NavigationBarActivity {
     DayData dayData;
     TextView targetConsumption, consumption, message;
@@ -23,17 +26,18 @@ public class MainActivity extends NavigationBarActivity {
         // Initialize global preferences
         Global.initialize(getApplicationContext());
 
+        // Schedule notifications
         consumeWaterAlarmSchedule();
 
         // Redirect the user to settings if the settings are invalid or unset
         if (tryRedirectToSettings()) {
             return;
-
         }
+
+        // Set a random motivational message
         message = findViewById(R.id.textView4);
         motivationMessages = new MotivationMessages();
         message.setText(motivationMessages.getRandomMessage());
-
 
 
         dayData = Global.readSpecificDayData(new Date());
@@ -52,7 +56,9 @@ public class MainActivity extends NavigationBarActivity {
         updateConsumptionValue();
     }
 
-
+    /**
+     * Display current water consumption amount on the activity
+     */
     public void updateConsumptionValue() {
         consumption = findViewById(R.id.textView);
         consumption.setText(Double.toString(dayData.getConsumption()) + "ml");
@@ -75,9 +81,11 @@ public class MainActivity extends NavigationBarActivity {
     }
 
     /**
-     * Method that redirects the current activity to settings if saved preferences are invalid
+     * Redirect the current activity to settings, if saved preferences are invalid
+     *
+     * @return boolean
      */
-    private Boolean tryRedirectToSettings() {
+    private boolean tryRedirectToSettings() {
         if (!Global.isValidAge(Global.readPreference("age", -1)) || !Global.isValidWeight(Global.readPreference("weight", -1)) || !Global.isValidGender(Global.readPreference("gender", "invalid"))) {
             Intent newActivity = new Intent(this, SettingsActivity.class);
             startActivity(newActivity);
@@ -87,7 +95,7 @@ public class MainActivity extends NavigationBarActivity {
     }
 
     /**
-     * Schedule alarm for water consumption
+     * Schedule alarm for water consumption notifications
      */
     public void consumeWaterAlarmSchedule() {
         Intent intent = new Intent(getApplicationContext(), NotificationHandler.class);
