@@ -18,7 +18,9 @@
         android:id="@+id/navigationMain"
         android:layout_width="30pt"
         android:layout_height="30pt"
+        android:backgroundTintMode="add"
         android:onClick="navigationClick"
+        android:padding="7pt"
         android:scaleType="fitXY"
         android:src="@drawable/droplet"
         android:text="Etusivu"></ImageButton>
@@ -32,8 +34,10 @@
         android:id="@+id/navigationHistory"
         android:layout_width="30pt"
         android:layout_height="30pt"
+        android:backgroundTintMode="add"
         android:onClick="navigationClick"
         android:scaleType="fitXY"
+        android:padding="7pt"
         android:src="@drawable/graph"
         android:text="Historia"></ImageButton>
 
@@ -46,8 +50,10 @@
         android:id="@+id/navigationTrophies"
         android:layout_width="30pt"
         android:layout_height="30pt"
+        android:backgroundTintMode="add"
         android:onClick="navigationClick"
         android:scaleType="fitXY"
+        android:padding="7pt"
         android:src="@drawable/trophy"
         android:text="Palkinnot"></ImageButton>
 
@@ -60,8 +66,10 @@
         android:id="@+id/navigationSettings"
         android:layout_width="30pt"
         android:layout_height="30pt"
+        android:backgroundTintMode="add"
         android:onClick="navigationClick"
         android:scaleType="fitXY"
+        android:padding="7pt"
         android:src="@drawable/settings"
         android:text="Asetukset"></ImageButton>
 
