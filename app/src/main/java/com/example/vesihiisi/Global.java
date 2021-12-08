@@ -3,6 +3,7 @@ package com.example.vesihiisi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 /**
  * A global singleton for user preferences, activity data and trophies
@@ -13,10 +14,10 @@ public class Global {
     private static final String PREF_KEY = "GLOBAL_PREFERENCES";
     private static SharedPreferences preferences;
 
-    public static void initialize(Context context)
-    {
-        if(preferences == null)
+    public static void initialize(Context context) {
+        if(preferences == null) {
             preferences = context.getSharedPreferences(PREF_KEY, Activity.MODE_PRIVATE);
+        }
     }
 
     private Global() {
@@ -58,7 +59,7 @@ public class Global {
      * @return Boolean
      */
     public static Boolean isValidGender(String gender) {
-        return gender == "male" || gender == "female" || gender == "other";
+        return  gender.equals("male") || gender.equals("female") || gender.equals("other");
     }
 
     /**
