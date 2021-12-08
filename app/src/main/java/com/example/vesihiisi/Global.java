@@ -3,7 +3,6 @@ package com.example.vesihiisi;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 /**
  * A global singleton for user preferences, activity data and trophies
