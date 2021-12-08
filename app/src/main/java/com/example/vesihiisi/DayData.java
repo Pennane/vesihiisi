@@ -7,8 +7,8 @@ import java.util.Date;
  */
 public class DayData {
     private Date date;
-    private double consumption;
-    private double targetConsumption;
+    private int consumption;
+    private int targetConsumption;
     private int age;
     private double weight;
 
@@ -34,9 +34,9 @@ public class DayData {
      * @param age in years
      * @param weight in kilograms
      * @param gender as "male", "female" or "other"
-     * @return
+     * @return target consumption in millilitres
      */
-    private static double getTargetConsumption(int age, double weight, String gender) {
+    private static int getTargetConsumption(int age, double weight, String gender) {
         double computedConsumption;
         if (age < 15) {
             computedConsumption = (0.05*weight + 0.7) * 1000;
@@ -54,7 +54,7 @@ public class DayData {
             computedConsumption *= 1.015;
         }
 
-        return computedConsumption;
+        return (int) computedConsumption;
     }
 
     /**
@@ -78,15 +78,15 @@ public class DayData {
      *
      * @return target water consumption in millilitres
      */
-    public double getTargetConsumption() {
-        return targetConsumption;
+    public int getTargetConsumption() {
+        return (int) consumption;
     }
 
     /**
      *
      * @param targetConsumption in millilitres
      */
-    public void setTargetConsumption(double targetConsumption) {
+    public void setTargetConsumption(int targetConsumption) {
         this.targetConsumption = targetConsumption;
     }
 
