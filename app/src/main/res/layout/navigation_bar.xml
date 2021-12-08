@@ -1,64 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="30pt"
-    android:gravity="center_horizontal|bottom"
-    android:layout_gravity="bottom"
     android:id="@+id/navigationBar"
-    >
-    <Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:gravity="center_horizontal|bottom"
+    android:paddingTop="2pt"
+    android:paddingBottom="2pt">
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"></Space>
+
+    <ImageButton
         android:id="@+id/navigationMain"
-        android:onClick="navigationClick"
         android:layout_width="30pt"
         android:layout_height="30pt"
-        android:text="Etusivu"
-        android:gravity="center_horizontal|center_vertical"
-        ></Button>
+        android:onClick="navigationClick"
+        android:scaleType="fitXY"
+        android:src="@drawable/droplet"
+        android:text="Etusivu"></ImageButton>
 
     <Space
         android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_weight="1" >
-    </Space>
+        android:layout_height="match_parent"
+        android:layout_weight="1"></Space>
 
-    <Button
+    <ImageButton
         android:id="@+id/navigationHistory"
-        android:onClick="navigationClick"
         android:layout_width="30pt"
         android:layout_height="30pt"
-        android:text="Historia"
-        android:gravity="center_horizontal|center_vertical"
-        ></Button>
+        android:onClick="navigationClick"
+        android:scaleType="fitXY"
+        android:src="@drawable/graph"
+        android:text="Historia"></ImageButton>
 
     <Space
         android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_weight="1" >
-    </Space>
+        android:layout_height="match_parent"
+        android:layout_weight="1"></Space>
 
-    <Button
+    <ImageButton
         android:id="@+id/navigationTrophies"
-        android:onClick="navigationClick"
         android:layout_width="30pt"
         android:layout_height="30pt"
-        android:text="Palkinnot"
-        android:gravity="center_horizontal|center_vertical"
-        ></Button>
+        android:onClick="navigationClick"
+        android:scaleType="fitXY"
+        android:src="@drawable/trophy"
+        android:text="Palkinnot"></ImageButton>
 
     <Space
         android:layout_width="0dp"
-        android:layout_height="1dp"
-        android:layout_weight="1" >
-    </Space>
+        android:layout_height="match_parent"
+        android:layout_weight="1"></Space>
 
-    <Button
-        android:onClick="navigationClick"
+    <ImageButton
         android:id="@+id/navigationSettings"
         android:layout_width="30pt"
         android:layout_height="30pt"
-        android:text="Asetukset"
-        android:gravity="center_horizontal|center_vertical"
-        ></Button>
+        android:onClick="navigationClick"
+        android:scaleType="fitXY"
+        android:src="@drawable/settings"
+        android:text="Asetukset"></ImageButton>
+
+    <Space
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"></Space>
 
 </LinearLayout>
