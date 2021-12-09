@@ -23,7 +23,7 @@ public class HistoryActivity extends NavigationBarActivity {
 
         presidentListView.setAdapter(new ArrayAdapter<DayData>(
                 this,
-                android.R.layout.simple_list_item_1,
+                R.layout.history_item_layout,
                 Global.readDayDataList())
         );
 

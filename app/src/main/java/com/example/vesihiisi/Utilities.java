@@ -3,6 +3,7 @@ package com.example.vesihiisi;
 import android.app.Activity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -13,7 +14,6 @@ import java.util.Date;
  * Utility class for miscellaneous methods
  */
 public class Utilities {
-
     /**
      * A static utility method that hides the keyboard, provided that it is called from an Activity
      *
@@ -57,4 +57,5 @@ public class Utilities {
         int index = (int) (Math.random() * arrayList.size());
         return arrayList.get(index);
     }
+
 }

@@ -56,6 +56,11 @@ public class MainActivity extends NavigationBarActivity {
         updateConsumptionValue();
     }
 
+    protected void onPause() {
+        super.onPause();
+        message.setText(motivationMessages.getRandomMessage());
+    }
+
     /**
      * Display current water consumption amount on the activity
      */

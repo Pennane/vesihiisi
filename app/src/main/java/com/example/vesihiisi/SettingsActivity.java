@@ -138,5 +138,7 @@ public class SettingsActivity extends NavigationBarActivity {
         toast.show();
         // Return the navigation bar
         showNavigationBar();
+
+
     }
 }

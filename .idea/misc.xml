@@ -3,24 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2682291666666667" />
         <entry key="app/src/main/res/drawable/circle.xml" value="0.27395833333333336" />
-        <entry key="app/src/main/res/drawable/droplet.xml" value="0.26974358974358975" />
-        <entry key="app/src/main/res/drawable/textlines.xml" value="0.14895833333333333" />
+        <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2682291666666667" />
         <entry key="app/src/main/res/layout/activity_day_data.xml" value="0.1546875" />
         <entry key="app/src/main/res/layout/activity_history.xml" value="0.11875" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_settings.xml" value="0.363059229699874" />
         <entry key="app/src/main/res/layout/activity_testmain.xml" value="0.24375" />
-        <entry key="app/src/main/res/layout/activity_trophies.xml" value="0.24375" />
+        <entry key="app/src/main/res/layout/activity_trophies.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_settings.xml" value="0.2578125" />
+        <entry key="app/src/main/res/layout/history_item_layout.xml" value="0.2520833333333333" />
         <entry key="app/src/main/res/layout/navigation_bar.xml" value="0.2578125" />
-        <entry key="app/src/main/res/layout/textlines.xml" value="0.1546875" />
         <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.2578125" />
       </map>
     </option>
   </component>
   <component name="JavadocGenerationManager">
-    <option name="OUTPUT_DIRECTORY" value="$USER_HOME$/Desktop/vesihiisi-javadoc" />
+    <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/../vesihiisi-javadoc" />
     <option name="OPTION_DOCUMENT_TAG_USE" value="true" />
     <option name="OPTION_DOCUMENT_TAG_AUTHOR" value="true" />
     <option name="OPTION_DOCUMENT_TAG_VERSION" value="true" />
