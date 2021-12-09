@@ -1,4 +1,5 @@
 package com.example.vesihiisi;
+
 import static com.example.vesihiisi.Utilities.hideKeyboard;
 
 import android.content.Context;
@@ -34,23 +35,23 @@ public class SettingsActivity extends NavigationBarActivity {
         int selectedId = radioGroupGender.getCheckedRadioButtonId();
         radioButtonGender = (RadioButton) findViewById(selectedId);
 
-        gender = Global.readPreference("gender","unset");
-        age = Global.readPreference("age",0);
-        weight = Global.readPreference("weight",0);
+        gender = Global.readPreference("gender", "unset");
+        age = Global.readPreference("age", 0);
+        weight = Global.readPreference("weight", 0);
 
         editTextAge.setText(Integer.toString(age));
         editTextWeight.setText(Integer.toString(weight));
 
-        if (gender.toLowerCase() == "male") {
+        if (gender.toLowerCase().equals("male")) {
             ((RadioButton) radioGroupGender.getChildAt(0)).setChecked(true);
-        } else if (gender.toLowerCase() == "female") {
+        } else if (gender.toLowerCase().equals("female")) {
             ((RadioButton) radioGroupGender.getChildAt(1)).setChecked(true);
-        } else if (gender.toLowerCase() == "other") {
+        } else if (gender.toLowerCase().equals("other")) {
             ((RadioButton) radioGroupGender.getChildAt(2)).setChecked(true);
         }
 
         // If any of the set values are invalid, hide the navigation bar
-        if(!Global.isValidAge(age) ||!Global.isValidGender(gender) || !Global.isValidWeight(weight)) {
+        if (!Global.isValidAge(age) || !Global.isValidGender(gender) || !Global.isValidWeight(weight)) {
             hideNavigationBar();
         }
     }
@@ -108,7 +109,7 @@ public class SettingsActivity extends NavigationBarActivity {
 
     /**
      * Validates input and saves them into the global shared preferences.
-     *
+     * <p>
      * Summons toasts to show status
      *
      * @param view
@@ -135,7 +136,6 @@ public class SettingsActivity extends NavigationBarActivity {
         CharSequence text = "Asetukset tallennettu!";
         toast = Toast.makeText(context, text, duration);
         toast.show();
-
         // Return the navigation bar
         showNavigationBar();
     }
