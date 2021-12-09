@@ -11,13 +11,16 @@ import android.net.Uri;
 
 import androidx.core.app.NotificationCompat;
 
+import java.util.Date;
+
 /**
  * Handles notifications. Receives alerts from MainActivity
  * and turns them into notifications in createNotification.
  * <p>
  * Modified from stackoverflow
  *
- * @author Jimale Abdi
+ * @author Arttu Pennanen
+ * @author Jimale Abdi (stack overflow)
  * @see <a href="https://stackoverflow.com/a/55910596/11212780">How to show a notification everyday at a certain time even when the app is closed?</a>
  */
 public class NotificationHandler extends BroadcastReceiver {
@@ -25,43 +28,56 @@ public class NotificationHandler extends BroadcastReceiver {
     private static final String NOTIFICATION_CHANNEL_NAME = "WATER_NOTIFICATION";
 
     /**
-     * Alarm handler
+     * Alarm handler. If daily consumption is not filled, it creates a notification.
      *
      * @param context
      * @param intent
      */
     @Override
     public void onReceive(Context context, Intent intent) {
-        createNotification(context);
+        Date now = new Date();
+        DayData todayDayData = Global.readSpecificDayData(now);
+
+        if (todayDayData.getConsumption() < todayDayData.getTargetConsumption()) {
+            createHydrationNotification(context, todayDayData);
+        }
     }
 
     /**
      * Creates and serves a hydration notification.
+     * The notification show how much water you still should drink that day.
      * <p>
      * Has a custom notification sound.
      *
      * @param context
+     * @param dayData for the current day
      */
-    private void createNotification(Context context) {
-        Intent intent = new Intent(context, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        PendingIntent resultPendingIntent = PendingIntent.getActivity(
+    private void createHydrationNotification(Context context, DayData dayData) {
+        Intent targetIntent = new Intent(context, MainActivity.class);
+        targetIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+
+        PendingIntent afterOpenIntent = PendingIntent.getActivity(
                 context,
-                0, intent,
+                0, targetIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT
         );
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID);
-        builder.setSmallIcon(R.mipmap.ic_launcher);
-        builder.setContentTitle("Vesihiisi huomauttaa")
-                .setContentText("Juo vettä!")
+
+        builder
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle("Vesihiisi huomauttaa")
+                .setContentText("Sinun pitäisi juoda tänään vielä " +
+                        Integer.toString(
+                                dayData.getTargetConsumption() - dayData.getConsumption()
+                        ) + "ml vettä!")
                 .setAutoCancel(false)
                 .setVibrate(new long[]{1000, 1000, 1000, 1000, 1000})
                 .setSound(Uri.parse("android.resource://" + context.getPackageName() + "/" + R.raw.siuunotification))
-                .setContentIntent(resultPendingIntent);
+                .setContentIntent(afterOpenIntent);
 
 
-        NotificationManager mNotificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
+        NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             int importance = NotificationManager.IMPORTANCE_DEFAULT;
@@ -69,11 +85,12 @@ public class NotificationHandler extends BroadcastReceiver {
             notificationChannel.enableLights(true);
             notificationChannel.setLightColor(Color.RED);
             notificationChannel.enableVibration(true);
-            assert mNotificationManager != null;
+            assert notificationManager != null;
             builder.setChannelId(NOTIFICATION_CHANNEL_ID);
-            mNotificationManager.createNotificationChannel(notificationChannel);
+            notificationManager.createNotificationChannel(notificationChannel);
         }
-        assert mNotificationManager != null;
-        mNotificationManager.notify(0, builder.build());
+
+        assert notificationManager != null;
+        notificationManager.notify(0, builder.build());
     }
 }
