@@ -86,19 +86,35 @@ public class Global {
      */
     public static DayData readSpecificDayData(Date date) {
         ArrayList<DayData> savedDayDataList = readDayDataList();
-        Optional<DayData> savedDayData = savedDayDataList
+        Optional<DayData> possibleDayData = savedDayDataList
                 .stream()
                 .filter(d -> isSameDay(d.getDate(), date))
                 .findAny();
 
-        if (!savedDayData.isPresent()) {
+        if (!possibleDayData.isPresent()) {
             return new DayData(
                     Global.readPreference("age", 30),
                     Global.readPreference("weight", 70),
                     Global.readPreference("gender", "invalid")
             );
         }
-        return savedDayData.get();
+
+        DayData savedDayData = possibleDayData.get();
+        Date now = new Date();
+
+        // Keep the preferences up to date
+        if (isSameDay(savedDayData.getDate(), now)) {
+            int newAge = Global.readPreference("age", savedDayData.getAge());
+            int newWeight = Global.readPreference("weight", savedDayData.getWeight());
+            String newGender = Global.readPreference("gender", savedDayData.getGender());
+            int newTargetConsumption = DayData.calculateTargetConsumption(newAge, newWeight, newGender);
+            savedDayData.setAge(newAge);
+            savedDayData.setWeight(newWeight);
+            savedDayData.setGender(newGender);
+            savedDayData.setTargetConsumption(newTargetConsumption);
+        }
+
+        return savedDayData;
     }
 
     /**

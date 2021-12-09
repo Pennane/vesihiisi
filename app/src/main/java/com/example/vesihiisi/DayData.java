@@ -10,8 +10,10 @@ public class DayData {
     private int consumption;
     private int targetConsumption;
     private int age;
-    private double weight;
+    private int weight;
     private int maxConsumption;
+    private String gender;
+
 
     /**
      * Constructor for DayData objects.
@@ -21,11 +23,12 @@ public class DayData {
      * @param weight in kilograms
      * @param gender as "male", "female" or "other"
      */
-    public DayData(int age, double weight, String gender) {
+    public DayData(int age, int weight, String gender) {
         this.date = new Date();
         this.age = age;
         this.weight = weight;
-        this.targetConsumption = getTargetConsumption(age, weight, gender);
+        this.gender = gender;
+        this.targetConsumption = calculateTargetConsumption(age, weight, gender);
         this.maxConsumption = 5000;
     }
 
@@ -40,7 +43,7 @@ public class DayData {
      * @param gender as "male", "female" or "other"
      * @return target consumption in millilitres
      */
-    private static int getTargetConsumption(int age, double weight, String gender) {
+    public static int calculateTargetConsumption(int age, int weight, String gender) {
         double computedConsumption;
         if (age < 15) {
             computedConsumption = (0.05 * weight + 0.7) * 1000;
@@ -88,6 +91,13 @@ public class DayData {
     /**
      * @return target water consumption in millilitres
      */
+    public int calculateTargetConsumption() {
+        return targetConsumption;
+    }
+
+    /**
+     * @return targetConsumption in millilitres
+     */
     public int getTargetConsumption() {
         return targetConsumption;
     }
@@ -116,14 +126,14 @@ public class DayData {
     /**
      * @return weight in kilograms
      */
-    public double getWeight() {
+    public int getWeight() {
         return weight;
     }
 
     /**
      * @param weight in kilograms
      */
-    public void setWeight(double weight) {
+    public void setWeight(int weight) {
         this.weight = weight;
     }
 
@@ -143,6 +153,24 @@ public class DayData {
             return;
         }
         this.consumption = amount;
+    }
+
+    /**
+     * Returns the gender saved to the day data
+     *
+     * @return as "male", "female" or "other"
+     */
+    public String getGender() {
+        return gender;
+    }
+
+    /**
+     * Set the data gender
+     *
+     * @param gender "male", "female" or "other"
+     */
+    public void setGender(String gender) {
+        this.gender = gender;
     }
 
     @Override

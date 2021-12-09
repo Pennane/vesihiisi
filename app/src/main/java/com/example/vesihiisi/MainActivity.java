@@ -62,6 +62,7 @@ public class MainActivity extends NavigationBarActivity {
     public void updateConsumptionValue() {
         consumption = findViewById(R.id.textView);
         consumption.setText(Integer.toString(dayData.getConsumption()) + "ml");
+        targetConsumption.setText(Integer.toString(dayData.getTargetConsumption()) + "ml");
         Global.writeSpecificDayData(dayData, new Date());
     }
 
