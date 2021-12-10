@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-black"
                 android:gravity="center"
-                android:text="Asetukset"
+                android:text="@string/title_asetukset"
                 android:textSize="24sp" />
 
 
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:width="35pt"
                 android:labelFor="@+id/editTextNumberAge"
-                android:text="Ikä" />
+                android:text="@string/age_title" />
 
 
             <EditText
@@ -85,7 +85,7 @@
                 android:layout_height="wrap_content"
                 android:width="35pt"
                 android:labelFor="@+id/editTextNumberWeight"
-                android:text="Paino" />
+                android:text="@string/weight_title" />
 
             <EditText
                 android:id="@+id/editTextNumberWeight"
@@ -109,7 +109,7 @@
                 android:layout_height="wrap_content"
                 android:width="35pt"
                 android:labelFor="@+id/genderRadioGroup"
-                android:text="Sukupuoli" />
+                android:text="@string/gender_title" />
 
             <RadioGroup
                 android:id="@+id/radioGroupGender"
@@ -120,19 +120,19 @@
                     android:id="@+id/radioButtonMale"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Mies" />
+                    android:text="@string/man_gender" />
 
                 <RadioButton
                     android:id="@+id/radioButtonFemale"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Nainen" />
+                    android:text="@string/woman_gender" />
 
                 <RadioButton
                     android:id="@+id/radioButtonOtherGender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Muu" />
+                    android:text="@string/other_gender" />
             </RadioGroup>
 
         </LinearLayout>
@@ -148,7 +148,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="saveSettings"
-                android:text="Tallenna"
+                android:text="@string/save_title"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
         </LinearLayout>
@@ -162,8 +162,8 @@
             <ImageView
                 android:id="@+id/brandLogoImageView"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:contentDescription="Brand logo"
+                android:layout_height="match_parent"
+                android:contentDescription="@string/brand_logo_alt"
                 app:srcCompat="@mipmap/vesihiisi_launcher"
                 android:layout_gravity="end"
                 android:gravity="center"
@@ -179,7 +179,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="© Vesihiisi team 2021" />
+                    android:text="@string/copyright_title" />
 
 
             </LinearLayout>
@@ -197,18 +197,18 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Adnan Avni" />
+                    android:text="@string/adnan_avni" />
 
                 <TextView
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Nafisul Nazrul" />
+                    android:text="@string/nafisul_nazrul" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Arttu Pennanen" />
+                    android:text="@string/arttu_pennanen" />
             </LinearLayout>
         </LinearLayout>
 

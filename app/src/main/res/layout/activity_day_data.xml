@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="152dp"
         android:fontFamily="sans-serif-black"
-        android:text="1.1.2000"
+        android:text="@string/example_date"
         android:textColor="#000000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,7 +23,7 @@
         android:id="@+id/textViewDayDataConsumed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0ml"
+        android:text="@string/example_volume"
         android:textSize="20sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView9"
         app:layout_constraintEnd_toStartOf="@+id/textView9" />
@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
-        android:text="/"
+        android:text="@string/slash_character"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/textViewDayDataDate"
         app:layout_constraintStart_toStartOf="@+id/textViewDayDataDate"
@@ -43,7 +43,7 @@
         android:id="@+id/textViewDayDataTargetConsumption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="0ml"
+        android:text="@string/example_volume"
         android:textSize="20sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView9"
         app:layout_constraintStart_toEndOf="@+id/textView9" />
@@ -65,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:onClick="onUpdateClick"
-        android:text="Päivitä"
+        android:text="@string/update_title"
         app:layout_constraintEnd_toEndOf="@+id/editTextUpdateConsumption"
         app:layout_constraintStart_toStartOf="@+id/editTextUpdateConsumption"
         app:layout_constraintTop_toBottomOf="@+id/editTextUpdateConsumption" />
@@ -75,6 +75,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:importantForAutofill="no"
         android:inputType="number"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -82,13 +83,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.514"
-        android:importantForAutofill="no" />
+        tools:ignore="DuplicateSpeakableTextCheck" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViewBronzeTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Päivitä juodun veden määrä"
+        android:text="@string/updateAmountOfConsumed_dec"
         app:layout_constraintBottom_toTopOf="@+id/editTextUpdateConsumption"
         app:layout_constraintEnd_toEndOf="@+id/editTextUpdateConsumption"
         app:layout_constraintStart_toStartOf="@+id/editTextUpdateConsumption"
@@ -100,7 +101,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
-        android:text="Päivän historia"
+        android:text="@string/daysHistory_title"
         android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/textViewDayDataDate"
         app:layout_constraintEnd_toEndOf="@+id/textViewDayDataDate"

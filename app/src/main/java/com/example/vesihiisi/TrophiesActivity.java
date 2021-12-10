@@ -20,10 +20,10 @@ public class TrophiesActivity extends NavigationBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trophies);
 
-        silverIcon = findViewById(R.id.silver);
+        silverIcon = findViewById(R.id.silverTrophyImageView);
         silverIcon.setVisibility(View.INVISIBLE);
 
-        goldIcon = findViewById(R.id.gold);
+        goldIcon = findViewById(R.id.goldTrophyImageView);
         goldIcon.setVisibility(View.INVISIBLE);
 
         trophyCalculator = new TrophyCalculator();

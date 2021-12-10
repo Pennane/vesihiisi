@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigationBar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -12,7 +11,7 @@
     <Space
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"></Space>
+        android:layout_weight="1" />
 
     <ImageButton
         android:id="@+id/navigationMain"
@@ -23,59 +22,63 @@
         android:padding="7pt"
         android:scaleType="fitXY"
         android:src="@drawable/droplet"
-        android:text="Etusivu"></ImageButton>
+        android:text="@string/title_etusivu"
+        android:contentDescription="@string/link_etusivu_alt" />
 
     <Space
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"></Space>
+        android:layout_weight="1" />
 
     <ImageButton
         android:id="@+id/navigationHistory"
         android:layout_width="30pt"
         android:layout_height="30pt"
         android:backgroundTintMode="add"
+        android:contentDescription="@string/link_historia_alt"
         android:onClick="navigationClick"
-        android:scaleType="fitXY"
         android:padding="7pt"
+        android:scaleType="fitXY"
         android:src="@drawable/graph"
-        android:text="Historia"></ImageButton>
+        android:text="@string/title_history" />
 
     <Space
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"></Space>
+        android:layout_weight="1" />
 
     <ImageButton
         android:id="@+id/navigationTrophies"
         android:layout_width="30pt"
         android:layout_height="30pt"
         android:backgroundTintMode="add"
+        android:contentDescription="@string/link_trophies_alt"
         android:onClick="navigationClick"
-        android:scaleType="fitXY"
         android:padding="7pt"
+        android:scaleType="fitXY"
         android:src="@drawable/trophy"
-        android:text="Palkinnot"></ImageButton>
+        android:text="@string/title_palkinnot" />
 
     <Space
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"></Space>
+        android:layout_weight="1" />
 
     <ImageButton
         android:id="@+id/navigationSettings"
         android:layout_width="30pt"
         android:layout_height="30pt"
         android:backgroundTintMode="add"
+        android:contentDescription="@string/link_settings_alt"
         android:onClick="navigationClick"
-        android:scaleType="fitXY"
         android:padding="7pt"
+        android:scaleType="fitXY"
         android:src="@drawable/settings"
-        android:text="Asetukset"></ImageButton>
+        android:text="@string/title_asetukset" />
 
     <Space
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1"></Space>
+        android:layout_weight="1" />
 
 </LinearLayout>

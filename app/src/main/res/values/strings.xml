@@ -1,16 +1,46 @@
 <resources>
-    <string name="app_name">vesihiisi</string>
-    <string name="title_activity_testmain">testmain</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="title_activity_day_data">DayDataActivity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="app_name">Vesihiisi</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="example_motivationalMessage">Tsemppausviesti</string>
+    <string name="example_date">1.1.2000</string>
+    <string name="example_volume">0ml</string>
+
+    <string name="slash_character">/</string>
+
+    <string name="updateAmountOfConsumed_dec">Päivitä juodun veden määrä</string>
+    <string name="daysHistory_title">Päivän historia</string>
+    <string name="update_title">Päivitä</string>
+    <string name="age_title">Ikä</string>
+    <string name="weight_title">Paino</string>
+    <string name="gender_title">Sukupuoli</string>
+    <string name="mug_amount_ml">250ml</string>
+    <string name="bottle_amount_ml">500ml</string>
+    <string name="jug_amount_ml">1000ml</string>
+    <string name="circle">circle</string>
+    <string name="title_history">Historia</string>
+    <string name="title_etusivu">Etusivu</string>
+    <string name="title_asetukset">Asetukset</string>
+    <string name="title_palkinnot">Palkinnot</string>
+    <string name="man_gender">Mies</string>
+
+    <string name="woman_gender">Nainen</string>
+    <string name="other_gender">Muu</string>
+    <string name="save_title">Tallenna</string>
+    <string name="brand_logo_alt">Brand logo</string>
+    <string name="copyright_title">© Vesihiisi team 2021</string>
+    <string name="adnan_avni">Adnan Avni</string>
+    <string name="nafisul_nazrul">Nafisul Nazrul</string>
+    <string name="arttu_pennanen">Arttu Pennanen</string>
+    <string name="bronze_trophy_requirement">Asensit Vesihiiden</string>
+    <string name="silver_trophy_requirement">Päivän tavoite saavutettu</string>
+    <string name="gold_trophy_requirement">Kolmen päivän putki</string>
+
+    <string name="bronze_trophy_alt">Pronssinen pokaali</string>
+    <string name="silver_trophy_alt">Hopeinen pokaali</string>
+    <string name="gold_trophy_alt">Kultainen pokaali</string>
+
+    <string name="link_etusivu_alt">Linkki etusivulle</string>
+    <string name="link_historia_alt">Linkki historiaan</string>
+    <string name="link_trophies_alt">Linkki palkintoihin</string>
+    <string name="link_settings_alt">Linkki asetuksiin</string>
 </resources>
