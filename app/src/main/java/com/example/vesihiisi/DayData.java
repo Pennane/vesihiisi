@@ -20,7 +20,6 @@ public class DayData {
     private int maxConsumption;
     private String gender;
 
-
     /**
      * Constructor for DayData objects.
      * Calculates targetConsumption amount using local method getTargetConsumption
