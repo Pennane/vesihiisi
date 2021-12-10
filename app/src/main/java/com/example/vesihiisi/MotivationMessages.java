@@ -1,4 +1,3 @@
-
 package com.example.vesihiisi;
 
 import static com.example.vesihiisi.Utilities.randomFromArrayList;
@@ -27,7 +26,6 @@ public class MotivationMessages {
     }
 
     /**
-     *
      * @return a random motivational message from pre-defined messages.
      */
     public String getRandomMessage() {

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 /**
  * Calculates the amount of completed days
+ *
  * @author Adnan Avni
  * @author Nafisul Nazrul
  */
@@ -14,6 +15,7 @@ public class TrophyCalculator {
 
     /**
      * Searches the amount of completed days from daydatalist
+     *
      * @param dayDataList
      * @return Amount of completed days
      */

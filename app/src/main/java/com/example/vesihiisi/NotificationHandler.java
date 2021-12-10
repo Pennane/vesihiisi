@@ -64,8 +64,9 @@ public class NotificationHandler extends BroadcastReceiver {
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID);
 
+        // Build the notification
         builder
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.mipmap.vesihiisi_launcher)
                 .setContentTitle("Vesihiisi huomauttaa")
                 .setContentText("Sinun pitäisi juoda tänään vielä " +
                         Integer.toString(
@@ -79,16 +80,21 @@ public class NotificationHandler extends BroadcastReceiver {
 
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            int importance = NotificationManager.IMPORTANCE_DEFAULT;
-            NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, NOTIFICATION_CHANNEL_NAME, importance);
-            notificationChannel.enableLights(true);
-            notificationChannel.setLightColor(Color.RED);
-            notificationChannel.enableVibration(true);
+
+        // If current SDK version is too low, exit early and send without newer features.
+        if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.O) {
             assert notificationManager != null;
-            builder.setChannelId(NOTIFICATION_CHANNEL_ID);
-            notificationManager.createNotificationChannel(notificationChannel);
+            notificationManager.notify(0, builder.build());
+            return;
         }
+
+        NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, NOTIFICATION_CHANNEL_NAME, NotificationManager.IMPORTANCE_DEFAULT);
+        notificationChannel.enableLights(true);
+        notificationChannel.setLightColor(Color.BLUE);
+        notificationChannel.enableVibration(true);
+        assert notificationManager != null;
+        builder.setChannelId(NOTIFICATION_CHANNEL_ID);
+        notificationManager.createNotificationChannel(notificationChannel);
 
         assert notificationManager != null;
         notificationManager.notify(0, builder.build());

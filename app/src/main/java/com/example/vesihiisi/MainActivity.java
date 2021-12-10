@@ -52,14 +52,11 @@ public class MainActivity extends NavigationBarActivity {
         if (tryRedirectToSettings()) {
             return;
         }
+        message.setText(motivationMessages.getRandomMessage());
         dayData = Global.readSpecificDayData(new Date());
         updateConsumptionValue();
     }
 
-    protected void onPause() {
-        super.onPause();
-        message.setText(motivationMessages.getRandomMessage());
-    }
 
     /**
      * Display current water consumption amount on the activity

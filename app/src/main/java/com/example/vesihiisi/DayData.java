@@ -1,5 +1,7 @@
 package com.example.vesihiisi;
 
+import static com.example.vesihiisi.Utilities.dateToFinnishLocaleString;
+
 import java.util.Date;
 
 /**
@@ -175,6 +177,6 @@ public class DayData {
 
     @Override
     public String toString() {
-        return this.date.toString();
+        return dateToFinnishLocaleString(this.date);
     }
 }

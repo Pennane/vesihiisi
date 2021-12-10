@@ -3,7 +3,6 @@ package com.example.vesihiisi;
 import android.app.Activity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -14,6 +13,7 @@ import java.util.Date;
  * Utility class for miscellaneous methods
  */
 public class Utilities {
+
     /**
      * A static utility method that hides the keyboard, provided that it is called from an Activity
      *
@@ -51,11 +51,22 @@ public class Utilities {
      *
      * @param arrayList ArrayList of any type
      * @param <T>       the item type of the ArrayList
-     * @return <T> an item of the received ArrayList
+     * @return an item of the received ArrayList
      */
     public static <T> T randomFromArrayList(ArrayList<T> arrayList) {
         int index = (int) (Math.random() * arrayList.size());
         return arrayList.get(index);
     }
 
+    /**
+     * Convert date to short finnish locale
+     * eq. 1.12.2021
+     *
+     * @param date
+     * @return string in dd.mm.yyyy
+     */
+    public static String dateToFinnishLocaleString(Date date) {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+        return formatter.format(date);
+    }
 }

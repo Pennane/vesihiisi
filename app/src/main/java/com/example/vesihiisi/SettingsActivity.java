@@ -91,7 +91,6 @@ public class SettingsActivity extends NavigationBarActivity {
      * Reads input from the activity and stores those into the activity instance
      */
     private void readInput() {
-
         int selectedId = radioGroupGender.getCheckedRadioButtonId();
         radioButtonGender = (RadioButton) findViewById(selectedId);
 
@@ -103,8 +102,8 @@ public class SettingsActivity extends NavigationBarActivity {
             gender = "other";
         }
 
-        age = Integer.parseInt(editTextAge.getText().toString());
-        weight = Integer.parseInt(editTextWeight.getText().toString());
+        age = editTextAge.getText().toString().equals("") ? 0 : Integer.parseInt(editTextAge.getText().toString());
+        weight = editTextWeight.getText().toString().equals("") ? 0 : Integer.parseInt(editTextWeight.getText().toString());
     }
 
     /**
@@ -136,6 +135,7 @@ public class SettingsActivity extends NavigationBarActivity {
         CharSequence text = "Asetukset tallennettu!";
         toast = Toast.makeText(context, text, duration);
         toast.show();
+
         // Return the navigation bar
         showNavigationBar();
 

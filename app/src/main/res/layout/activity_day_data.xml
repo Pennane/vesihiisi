@@ -11,7 +11,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="152dp"
-        android:text="TextView"
+        android:fontFamily="sans-serif-black"
+        android:text="1.1.2000"
+        android:textColor="#000000"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -20,10 +23,10 @@
         android:id="@+id/textViewDayDataConsumed"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="12dp"
-        android:text="TextView"
+        android:text="0ml"
+        android:textSize="20sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView9"
-        app:layout_constraintEnd_toStartOf="@+id/textViewDayDataDate" />
+        app:layout_constraintEnd_toStartOf="@+id/textView9" />
 
     <TextView
         android:id="@+id/textView9"
@@ -31,20 +34,22 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:text="/"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/textViewDayDataDate"
+        app:layout_constraintStart_toStartOf="@+id/textViewDayDataDate"
         app:layout_constraintTop_toBottomOf="@+id/textViewDayDataDate" />
 
     <TextView
         android:id="@+id/textViewDayDataTargetConsumption"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
-        android:text="TextView"
+        android:text="0ml"
+        android:textSize="20sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/textView9"
         app:layout_constraintStart_toEndOf="@+id/textView9" />
 
     <include
+        android:id="@+id/include"
         layout="@layout/navigation_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -54,4 +59,52 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/sendUpdateConsumptionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onUpdateClick"
+        android:text="Päivitä"
+        app:layout_constraintEnd_toEndOf="@+id/editTextUpdateConsumption"
+        app:layout_constraintStart_toStartOf="@+id/editTextUpdateConsumption"
+        app:layout_constraintTop_toBottomOf="@+id/editTextUpdateConsumption" />
+
+    <EditText
+        android:id="@+id/editTextUpdateConsumption"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.514"
+        android:importantForAutofill="no" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Päivitä juodun veden määrä"
+        app:layout_constraintBottom_toTopOf="@+id/editTextUpdateConsumption"
+        app:layout_constraintEnd_toEndOf="@+id/editTextUpdateConsumption"
+        app:layout_constraintStart_toStartOf="@+id/editTextUpdateConsumption"
+        android:labelFor="@+id/editTextUpdateConsumption"
+        />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-black"
+        android:text="Päivän historia"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewDayDataDate"
+        app:layout_constraintEnd_toEndOf="@+id/textViewDayDataDate"
+        app:layout_constraintStart_toStartOf="@+id/textViewDayDataDate"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.503" />
 </androidx.constraintlayout.widget.ConstraintLayout>

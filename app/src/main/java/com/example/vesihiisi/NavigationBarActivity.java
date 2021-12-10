@@ -15,6 +15,9 @@ public abstract class NavigationBarActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Initialize global preferences
+        Global.initialize(getApplicationContext());
     }
 
     /**
@@ -41,6 +44,7 @@ public abstract class NavigationBarActivity extends AppCompatActivity {
     /**
      * Handle navigation link clicks.
      * The views must have correct navigation bar id's.
+     *
      * @param view
      */
     public void navigationClick(View view) {

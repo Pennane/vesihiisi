@@ -7,6 +7,7 @@
     tools:context=".SettingsActivity">
 
     <include
+        android:id="@+id/include3"
         layout="@layout/navigation_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,16 +19,35 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="409dp"
         android:layout_height="659dp"
         android:orientation="vertical"
-        android:paddingLeft="30dp"
-        android:paddingRight="40dp"
+        android:paddingStart="30dp"
         android:paddingTop="60dp"
-        app:layout_constraintBottom_toTopOf="@+id/include2"
+        android:paddingEnd="40dp"
+        app:layout_constraintBottom_toTopOf="@+id/include3"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center"
+                android:text="Asetukset"
+                android:textSize="24sp" />
+
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -39,9 +59,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:width="35pt"
-                android:text="Ikä"
                 android:labelFor="@+id/editTextNumberAge"
-                />
+                android:text="Ikä" />
 
 
             <EditText
@@ -49,9 +68,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="number"
                 android:minHeight="48dp"
-                android:importantForAutofill="no" />
+                tools:ignore="DuplicateSpeakableTextCheck" />
         </LinearLayout>
 
         <LinearLayout
@@ -64,40 +84,37 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:width="35pt"
-                android:text="Paino"
                 android:labelFor="@+id/editTextNumberWeight"
-                />
+                android:text="Paino" />
 
             <EditText
                 android:id="@+id/editTextNumberWeight"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:importantForAutofill="no"
                 android:inputType="number"
                 android:minHeight="48dp"
-                android:importantForAutofill="no" />
+                tools:ignore="DuplicateSpeakableTextCheck" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="150dp"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:width="35pt"
-                android:text="Sukupuoli"
                 android:labelFor="@+id/genderRadioGroup"
-                />
+                android:text="Sukupuoli" />
 
             <RadioGroup
                 android:id="@+id/radioGroupGender"
                 android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                >
+                android:layout_height="match_parent">
 
                 <RadioButton
                     android:id="@+id/radioButtonMale"
@@ -120,21 +137,76 @@
 
         </LinearLayout>
 
-         <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="150dp"
-    android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:orientation="horizontal">
 
-             <Button
-                 android:id="@+id/buttonSaveSettings"
-                 android:layout_width="0dp"
-                 android:layout_height="wrap_content"
-                 android:layout_weight="1"
-                 android:onClick="saveSettings"
-                 android:text="Tallenna"
-                 app:layout_constraintEnd_toEndOf="parent"
-                 app:layout_constraintStart_toStartOf="parent" />
-         </LinearLayout>
+            <Button
+                android:id="@+id/buttonSaveSettings"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="saveSettings"
+                android:text="Tallenna"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/brandLogoImageView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:contentDescription="Brand logo"
+                app:srcCompat="@mipmap/vesihiisi_launcher" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="© Vesihiisi team 2021" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Adnan Avni" />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nafisul Nazrul" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Arttu Pennanen" />
+            </LinearLayout>
+        </LinearLayout>
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
