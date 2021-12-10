@@ -35,6 +35,7 @@ public class TrophiesActivity extends NavigationBarActivity {
 
         int overTarget = trophyCalculator.amountOfCompletedDays(Global.readDayDataList());
 
+        // Show trophies based on how many "completed" days there are.
         if (overTarget >= 1) {
             silverIcon.setVisibility(View.VISIBLE);
         }

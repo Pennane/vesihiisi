@@ -12,6 +12,10 @@ import java.util.Date;
 
 /**
  * Default Activity, the main screen of the application
+ *
+ * @author Arttu Pennanen
+ * @author Adnan Avni
+ * @author Nafisul Nazrul
  */
 public class MainActivity extends NavigationBarActivity {
     DayData dayData;
@@ -39,7 +43,7 @@ public class MainActivity extends NavigationBarActivity {
         motivationMessages = new MotivationMessages();
         message.setText(motivationMessages.getRandomMessage());
 
-
+        // Update target consumption on screen
         dayData = Global.readSpecificDayData(new Date());
         targetConsumption = findViewById(R.id.textView2);
         targetConsumption.setText(Integer.toString(dayData.getTargetConsumption()) + "ml");
@@ -68,16 +72,31 @@ public class MainActivity extends NavigationBarActivity {
         Global.writeSpecificDayData(dayData, new Date());
     }
 
+    /**
+     * Handle consuming of a glass of water
+     *
+     * @param view
+     */
     public void onGlassButtonClick(View view) {
         dayData.consume(250);
         updateConsumptionValue();
     }
 
+    /**
+     * Handle consuming of a bottle of water
+     *
+     * @param view
+     */
     public void onBottleButtonClick(View view) {
         dayData.consume(500);
         updateConsumptionValue();
     }
 
+    /**
+     * Handle consuming of a jug of water
+     *
+     * @param view
+     */
     public void onJugButtonClick(View view) {
         dayData.consume(1000);
         updateConsumptionValue();
@@ -99,6 +118,9 @@ public class MainActivity extends NavigationBarActivity {
 
     /**
      * Schedule alarm for water consumption notifications
+     * <p>
+     * Currently the notification is sent every 3 minutes. This is only for demoing purposes.
+     * In reality the notifications would be sent maybe every 4 hours and not at night.
      */
     public void consumeWaterAlarmSchedule() {
         Intent intent = new Intent(getApplicationContext(), NotificationHandler.class);

@@ -17,7 +17,7 @@ import java.util.Date;
  * Handles notifications. Receives alerts from MainActivity
  * and turns them into notifications in createNotification.
  * <p>
- * Modified from stackoverflow
+ * Base notification logic modified from stackoverflow
  *
  * @author Arttu Pennanen
  * @author Jimale Abdi (stack overflow)
@@ -47,7 +47,9 @@ public class NotificationHandler extends BroadcastReceiver {
      * Creates and serves a hydration notification.
      * The notification show how much water you still should drink that day.
      * <p>
-     * Has a custom notification sound.
+     * Has a custom notification sound and icon.
+     * <p>
+     * Has different features for newer android versions.
      *
      * @param context
      * @param dayData for the current day

@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
  * An abstract class that adds the custom navigation bar to an activity.
  * "navigation_bar.xml" also needs to be manually included into the
  * activity layout for the navigation bar to appear successfully.
+ *
+ * @author Arttu Pennanen
  */
 public abstract class NavigationBarActivity extends AppCompatActivity {
     @Override
@@ -17,6 +19,8 @@ public abstract class NavigationBarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // Initialize global preferences
+        // This is here as a precaution,
+        // declaring this statement in MainActivity should suffice.
         Global.initialize(getApplicationContext());
     }
 

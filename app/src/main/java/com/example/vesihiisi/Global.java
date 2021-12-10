@@ -17,7 +17,6 @@ import java.util.Optional;
 /**
  * A global singleton for shared preferences
  * and activity day data (which is also stored in shared preferences but as serialized JSON )
- * <p>
  *
  * @author arttupennanen
  * @see <a href="https://stackoverflow.com/a/40347393/11212780">inspiration for shared preferences singleton</a>
@@ -32,7 +31,7 @@ public class Global {
 
     /**
      * Initialize json and shared preferences through static call.
-     * Has to be used before other methods of the class are to be used.
+     * HAS to be used before other methods of the singleton are to be used.
      *
      * @param context of MainActivity
      */
@@ -70,7 +69,7 @@ public class Global {
     /**
      * Overwrites stored JSON DayData ArrayList.
      *
-     * @param dayDataList
+     * @param dayDataList complete ArrayList of dayDatas to store
      */
     public static void writeDayDataList(ArrayList<DayData> dayDataList) {
         String json = gson.toJson(dayDataList);
@@ -80,6 +79,8 @@ public class Global {
     /**
      * Returns a day data object that has the requested date associated with it.
      * If there is nothing stored for that date, creates an empty dayData object for it.
+     * <p>
+     * Also validates and updates the preferences affecting water consumption values
      *
      * @param date
      * @return DayData that shares the received date

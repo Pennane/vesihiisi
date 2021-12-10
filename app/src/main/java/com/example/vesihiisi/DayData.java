@@ -6,6 +6,10 @@ import java.util.Date;
 
 /**
  * Water consumption data class with target consumption computing
+ *
+ * @author Adnan Avni
+ * @author Nafisul Nazrul
+ * @author Arttu Pennanen
  */
 public class DayData {
     private Date date;

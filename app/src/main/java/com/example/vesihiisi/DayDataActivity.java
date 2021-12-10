@@ -15,7 +15,9 @@ import android.widget.Toast;
 import java.util.Date;
 
 /**
- * Activity with the purpose of showing details of one day of hydration history
+ * Activity with the purpose of showing details of one day of hydration history data
+ *
+ * @author Arttu Pennanen
  */
 public class DayDataActivity extends NavigationBarActivity {
     TextView targetConsumptionTextView, consumptionTextView, dateTextView;
@@ -47,6 +49,9 @@ public class DayDataActivity extends NavigationBarActivity {
         updateTextViews();
     }
 
+    /**
+     * Set current dayData values on screen
+     */
     public void updateTextViews() {
         dayData = Global.readSpecificDayData(date);
         Log.d("test", "Consumption:" + Integer.toString(dayData.getConsumption()));
@@ -55,12 +60,19 @@ public class DayDataActivity extends NavigationBarActivity {
         dateTextView.setText(dateToFinnishLocaleString(dayData.getDate()));
     }
 
+    /**
+     * Validate and update new consumption value to the dayData
+     *
+     * @param view
+     */
     public void onUpdateClick(View view) {
         hideKeyboard(this);
 
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
 
+
+        // If editText is empty, return early
         if (updateConsumptionEditText.getText().toString().equals("")) {
             // Show a INVALID toast message
             CharSequence text = "Arvon on oltava 0-5000";
@@ -69,6 +81,7 @@ public class DayDataActivity extends NavigationBarActivity {
         }
 
         int value = Integer.parseInt(updateConsumptionEditText.getText().toString());
+        // If value is invalid, return early
         if (value < 0 || value > 5000) {
             // Show a INVALID toast message
             CharSequence text = "Arvon on oltava 0-5000";
@@ -77,6 +90,8 @@ public class DayDataActivity extends NavigationBarActivity {
         }
 
         dayData.setConsumption(value);
+
+        // Write to global storage
         Global.writeSpecificDayData(dayData, dayData.getDate());
 
         // Show a VALID toast message

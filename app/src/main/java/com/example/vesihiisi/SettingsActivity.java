@@ -12,7 +12,11 @@ import android.widget.Toast;
 
 
 /**
- * Activity for displaying and editing settings
+ * Activity for displaying and editing user settings.
+ *
+ * @author Nafisul Nazrul
+ * @author Adnan Avni
+ * @author Arttu Pennanen
  */
 public class SettingsActivity extends NavigationBarActivity {
     private EditText editTextAge, editTextWeight;

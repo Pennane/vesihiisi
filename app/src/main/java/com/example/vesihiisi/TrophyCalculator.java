@@ -14,13 +14,12 @@ public class TrophyCalculator {
     }
 
     /**
-     * Searches the amount of completed days from daydatalist
+     * Searches the amount of completed days from dayDataList
      *
-     * @param dayDataList
+     * @param dayDataList Arraylist of DayData
      * @return Amount of completed days
      */
-
-    public int amountOfCompletedDays(ArrayList<DayData> dayDataList) {
+    public static int amountOfCompletedDays(ArrayList<DayData> dayDataList) {
         return (int) dayDataList.stream().filter(dayData -> dayData.getConsumption() >= dayData.getTargetConsumption()).count();
     }
 }

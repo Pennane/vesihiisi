@@ -11,6 +11,8 @@ import android.widget.ListView;
 
 /**
  * Activity that displays stored hydration history as a basic list view
+ *
+ * @author Arttu Pennanen
  */
 public class HistoryActivity extends NavigationBarActivity {
 

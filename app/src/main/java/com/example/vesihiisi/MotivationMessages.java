@@ -5,7 +5,10 @@ import static com.example.vesihiisi.Utilities.randomFromArrayList;
 import java.util.ArrayList;
 
 /**
- * Provides random motivation messages about hydration.
+ * Provides random motivational messages about hydration.
+ *
+ * @author Adnan Avni
+ * @author Nafisul Nazrul
  */
 public class MotivationMessages {
     private ArrayList<String> messages = new ArrayList<>();

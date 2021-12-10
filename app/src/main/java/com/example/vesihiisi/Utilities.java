@@ -11,6 +11,8 @@ import java.util.Date;
 
 /**
  * Utility class for miscellaneous methods
+ *
+ * @author Arttu Pennanen
  */
 public class Utilities {
 
@@ -47,7 +49,9 @@ public class Utilities {
     }
 
     /**
-     * Get a random item from an ArrayList<></>
+     * Get a random item from an ArrayList
+     * <p>
+     * I might not understand generic types well enough, but this seems to work.
      *
      * @param arrayList ArrayList of any type
      * @param <T>       the item type of the ArrayList
