@@ -166,6 +166,7 @@
                 android:contentDescription="Brand logo"
                 app:srcCompat="@mipmap/vesihiisi_launcher"
                 android:layout_gravity="end"
+                android:gravity="center"
                 />
 
             <LinearLayout
