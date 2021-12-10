@@ -25,7 +25,7 @@ import java.util.Date;
  */
 public class NotificationHandler extends BroadcastReceiver {
     private static final String NOTIFICATION_CHANNEL_ID = "10002";
-    private static final String NOTIFICATION_CHANNEL_NAME = "WATER_NOTIFICATION";
+    private static final String NOTIFICATION_CHANNEL_NAME = "Veden nauttiminen";
 
     /**
      * Alarm handler. If daily consumption is not filled, it creates a notification.
