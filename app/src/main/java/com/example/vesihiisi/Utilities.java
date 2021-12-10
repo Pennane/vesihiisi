@@ -1,5 +1,6 @@
 package com.example.vesihiisi;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -14,12 +15,13 @@ import java.util.Date;
  *
  * @author Arttu Pennanen
  */
+@SuppressLint("SimpleDateFormat")
 public class Utilities {
 
     /**
      * A static utility method that hides the keyboard, provided that it is called from an Activity
      *
-     * @param activity
+     * @param activity of where the method is called from
      * @author Reto Meier
      * @see <a href="https://stackoverflow.com/a/17789187/11212780">How do you close/hide the Android soft keyboard programmatically?</a>
      */
@@ -37,15 +39,14 @@ public class Utilities {
     /**
      * Shows if two given dates exist on the same day
      *
-     * @param date1
-     * @param date2
+     * @param date1 to compare against date2
+     * @param date2 to compare against date1
      * @return boolean
      */
     public static boolean isSameDay(Date date1, Date date2) {
         SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyyMMdd");
 
-        boolean sameDay = dateFormatter.format(date1).equals(dateFormatter.format(date2));
-        return sameDay;
+        return dateFormatter.format(date1).equals(dateFormatter.format(date2));
     }
 
     /**
@@ -66,7 +67,7 @@ public class Utilities {
      * Convert date to short finnish locale
      * eq. 1.12.2021
      *
-     * @param date
+     * @param date to convert to finnish local
      * @return string in dd.mm.yyyy
      */
     public static String dateToFinnishLocaleString(Date date) {

@@ -2,6 +2,8 @@ package com.example.vesihiisi;
 
 import static com.example.vesihiisi.Utilities.dateToFinnishLocaleString;
 
+import androidx.annotation.NonNull;
+
 import java.util.Date;
 
 /**
@@ -12,13 +14,17 @@ import java.util.Date;
  * @author Arttu Pennanen
  */
 public class DayData {
-    private Date date;
+    private final Date date;
     private int consumption;
     private int targetConsumption;
     private int age;
     private int weight;
-    private int maxConsumption;
     private String gender;
+
+    public static final int maxConsumption = 5000;
+    public static final int minConsumption = 0;
+    public static final int maxTargetConsumption = 4000;
+    public static final int minTargetConsumption = 1000;
 
     /**
      * Constructor for DayData objects.
@@ -34,7 +40,6 @@ public class DayData {
         this.weight = weight;
         this.gender = gender;
         this.targetConsumption = calculateTargetConsumption(age, weight, gender);
-        this.maxConsumption = 5000;
     }
 
     /**
@@ -58,17 +63,18 @@ public class DayData {
             computedConsumption = age * weight;
         }
 
+        // 1.03x for male
+        // 1x for female
+        // 1.015x for other
         if (gender.equals("male")) {
             computedConsumption *= 1.03;
-        } else if (gender.equals("female")) {
-            //
-        } else {
+        } else if (!gender.equals("female")) {
             computedConsumption *= 1.015;
         }
 
-        int clampedComputedConsumption = (int) Math.max(Math.min(computedConsumption, 4000), 1000);
 
-        return clampedComputedConsumption;
+        // clamped computed consumption
+        return (int) Math.max(Math.min(computedConsumption, maxTargetConsumption), minTargetConsumption);
     }
 
     /**
@@ -85,19 +91,11 @@ public class DayData {
         consumption += amount;
     }
 
+    /**
+     * @return date object of the dayData
+     */
     public Date getDate() {
         return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    /**
-     * @return target water consumption in millilitres
-     */
-    public int calculateTargetConsumption() {
-        return targetConsumption;
     }
 
     /**
@@ -178,6 +176,7 @@ public class DayData {
         this.gender = gender;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return dateToFinnishLocaleString(this.date);

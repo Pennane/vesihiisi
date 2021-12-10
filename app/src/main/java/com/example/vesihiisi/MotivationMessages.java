@@ -11,8 +11,9 @@ import java.util.ArrayList;
  * @author Nafisul Nazrul
  */
 public class MotivationMessages {
-    private ArrayList<String> messages = new ArrayList<>();
+    private final ArrayList<String> messages = new ArrayList<>();
 
+    @SuppressWarnings("SpellCheckingInspection")
     public MotivationMessages() {
         messages.add("Vesihiisi sanoo, juo vettä!");
         messages.add("Vesilasi päivässä pitää lääkärin loitolla!");

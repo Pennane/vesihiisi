@@ -1,12 +1,13 @@
 package com.example.vesihiisi;
 
+import static com.example.vesihiisi.DayData.maxConsumption;
+import static com.example.vesihiisi.DayData.minConsumption;
 import static com.example.vesihiisi.Utilities.dateToFinnishLocaleString;
 import static com.example.vesihiisi.Utilities.hideKeyboard;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -54,16 +55,15 @@ public class DayDataActivity extends NavigationBarActivity {
      */
     public void updateTextViews() {
         dayData = Global.readSpecificDayData(date);
-        Log.d("test", "Consumption:" + Integer.toString(dayData.getConsumption()));
-        targetConsumptionTextView.setText(Integer.toString(dayData.getTargetConsumption()) + "ml");
-        consumptionTextView.setText(Integer.toString(dayData.getConsumption()) + "ml");
+        targetConsumptionTextView.setText(getString(R.string.dynamic_ml, dayData.getTargetConsumption()));
+        consumptionTextView.setText(getString(R.string.dynamic_ml, dayData.getConsumption()));
         dateTextView.setText(dateToFinnishLocaleString(dayData.getDate()));
     }
 
     /**
      * Validate and update new consumption value to the dayData
      *
-     * @param view
+     * @param view of which the event comes from
      */
     public void onUpdateClick(View view) {
         hideKeyboard(this);
@@ -75,17 +75,15 @@ public class DayDataActivity extends NavigationBarActivity {
         // If editText is empty, return early
         if (updateConsumptionEditText.getText().toString().equals("")) {
             // Show a INVALID toast message
-            CharSequence text = "Arvon on oltava 0-5000";
-            Toast.makeText(context, text, duration).show();
+            Toast.makeText(context, R.string.invalid_consumption, duration).show();
             return;
         }
 
         int value = Integer.parseInt(updateConsumptionEditText.getText().toString());
         // If value is invalid, return early
-        if (value < 0 || value > 5000) {
+        if (value < minConsumption || value > maxConsumption) {
             // Show a INVALID toast message
-            CharSequence text = "Arvon on oltava 0-5000";
-            Toast.makeText(context, text, duration).show();
+            Toast.makeText(context, R.string.invalid_consumption, duration).show();
             return;
         }
 
@@ -95,8 +93,7 @@ public class DayDataActivity extends NavigationBarActivity {
         Global.writeSpecificDayData(dayData, dayData.getDate());
 
         // Show a VALID toast message
-        CharSequence text = "Arvo tallennettu";
-        Toast.makeText(context, text, duration).show();
+        Toast.makeText(context, R.string.value_stored, duration).show();
         updateTextViews();
     }
 }

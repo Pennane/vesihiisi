@@ -49,7 +49,7 @@ public class MainActivity extends NavigationBarActivity {
         // Update target consumption on screen
         dayData = Global.readSpecificDayData(new Date());
         targetConsumption = findViewById(R.id.textView2);
-        targetConsumption.setText(Integer.toString(dayData.getTargetConsumption()) + "ml");
+        targetConsumption.setText(getString(R.string.dynamic_ml, dayData.getTargetConsumption()));
     }
 
 
@@ -64,9 +64,8 @@ public class MainActivity extends NavigationBarActivity {
         updateConsumptionValue();
     }
 
-    private void showTargetAchievedToast () {
-        CharSequence text = "Juomistavoite saavutettu!";
-        Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
+    private void showTargetAchievedToast() {
+        Toast.makeText(this, R.string.target_achieved, Toast.LENGTH_SHORT).show();
     }
 
 
@@ -75,15 +74,15 @@ public class MainActivity extends NavigationBarActivity {
      */
     public void updateConsumptionValue() {
         consumption = findViewById(R.id.textView);
-        consumption.setText(Integer.toString(dayData.getConsumption()) + "ml");
-        targetConsumption.setText(Integer.toString(dayData.getTargetConsumption()) + "ml");
+        consumption.setText(getString(R.string.dynamic_ml, dayData.getConsumption()));
+        targetConsumption.setText(getString(R.string.dynamic_ml, dayData.getTargetConsumption()));
         Global.writeSpecificDayData(dayData, new Date());
     }
 
     /**
      * Handle consuming of a glass of water
      *
-     * @param view
+     * @param view of which the click comes from
      */
     public void onGlassButtonClick(View view) {
         dayData.consume(250);
@@ -96,7 +95,7 @@ public class MainActivity extends NavigationBarActivity {
     /**
      * Handle consuming of a bottle of water
      *
-     * @param view
+     * @param view of which the click comes from
      */
     public void onBottleButtonClick(View view) {
         dayData.consume(500);
@@ -109,7 +108,7 @@ public class MainActivity extends NavigationBarActivity {
     /**
      * Handle consuming of a jug of water
      *
-     * @param view
+     * @param view of which the click comes from
      */
     public void onJugButtonClick(View view) {
         dayData.consume(1000);
@@ -137,7 +136,6 @@ public class MainActivity extends NavigationBarActivity {
      * Schedule alarm for water consumption notifications
      * <p>
      * If the alarm gets triggered between 22:00 and 08:88, it will be dropped by Notification handler.
-     *
      * <p>
      * Currently the notification is sent every 3 minutes. This is only for demoing purposes.
      * In reality the notifications would be sent maybe every 4 hours.

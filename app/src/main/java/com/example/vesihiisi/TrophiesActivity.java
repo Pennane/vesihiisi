@@ -13,7 +13,6 @@ import android.widget.ImageView;
  */
 public class TrophiesActivity extends NavigationBarActivity {
     ImageView silverIcon, goldIcon;
-    TrophyCalculator trophyCalculator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,15 +24,12 @@ public class TrophiesActivity extends NavigationBarActivity {
 
         goldIcon = findViewById(R.id.goldTrophyImageView);
         goldIcon.setVisibility(View.INVISIBLE);
-
-        trophyCalculator = new TrophyCalculator();
-
     }
 
     protected void onResume() {
         super.onResume();
 
-        int overTarget = trophyCalculator.amountOfCompletedDays(Global.readDayDataList());
+        int overTarget = TrophyCalculator.amountOfCompletedDays(Global.readDayDataList());
 
         // Show trophies based on how many "completed" days there are.
         if (overTarget >= 1) {

@@ -1,5 +1,6 @@
 package com.example.vesihiisi;
 
+import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -90,11 +91,13 @@ public class NotificationHandler extends BroadcastReceiver {
         Intent targetIntent = new Intent(context, MainActivity.class);
         targetIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
+        @SuppressLint("UnspecifiedImmutableFlag")
         PendingIntent afterOpenIntent = PendingIntent.getActivity(
                 context,
                 0, targetIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT
         );
+
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID);
 

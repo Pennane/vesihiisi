@@ -49,7 +49,7 @@ public abstract class NavigationBarActivity extends AppCompatActivity {
      * Handle navigation link clicks.
      * The views must have correct navigation bar id's.
      *
-     * @param view
+     * @param view of clicked view
      */
     public void navigationClick(View view) {
         Intent newActivity;

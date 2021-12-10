@@ -2,6 +2,7 @@ package com.example.vesihiisi;
 
 import static com.example.vesihiisi.Utilities.isSameDay;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -21,6 +22,7 @@ import java.util.Optional;
  * @author arttupennanen
  * @see <a href="https://stackoverflow.com/a/40347393/11212780">inspiration for shared preferences singleton</a>
  */
+@SuppressWarnings("ALL")
 public class Global {
     private static final String PREF_KEY = "GLOBAL_PREFERENCES";
     private static SharedPreferences preferences;
@@ -57,11 +59,12 @@ public class Global {
 
         // If nothing is stored, return an empty ArrayList
         if (json.equals("")) {
-            return new ArrayList<DayData>();
+            return new ArrayList<>();
         }
 
         Type listType = new TypeToken<ArrayList<DayData>>() {
         }.getType();
+
         ArrayList<DayData> dayDataList = gson.fromJson(json, listType);
         return dayDataList;
     }
@@ -82,7 +85,7 @@ public class Global {
      * <p>
      * Also validates and updates the preferences affecting water consumption values
      *
-     * @param date
+     * @param date date object for the dayData to search for
      * @return DayData that shares the received date
      */
     public static DayData readSpecificDayData(Date date) {
@@ -122,7 +125,7 @@ public class Global {
      * Overwrites dayData for a specific date.
      *
      * @param dayData object to add or replace from the DayData storage
-     * @param date
+     * @param date    date to overwrite the dayData at
      */
     public static void writeSpecificDayData(DayData dayData, Date date) {
         ArrayList<DayData> savedDayDataList = readDayDataList();
@@ -162,6 +165,7 @@ public class Global {
      * @param key   that the value should be stored behind
      * @param value String value to write
      */
+    @SuppressLint("ApplySharedPref")
     public static void writePreference(String key, String value) {
         SharedPreferences.Editor prefsEditor = preferences.edit();
         prefsEditor.putString(key, value);
@@ -185,39 +189,41 @@ public class Global {
      * @param key   that the value should be stored behind
      * @param value integer value to write
      */
+    @SuppressLint("ApplySharedPref")
     public static void writePreference(String key, int value) {
         SharedPreferences.Editor prefsEditor = preferences.edit();
-        prefsEditor.putInt(key, value).commit();
+        prefsEditor.putInt(key, value);
+        prefsEditor.commit();
     }
 
 
     /**
      * Checks if given integer is a valid age
      *
-     * @param age
+     * @param age in years
      * @return boolean
      */
     public static boolean isValidAge(int age) {
-        return age > 0 && age < 120;
+        return age >= 1 && age <= 120;
     }
 
     /**
      * Checks if given string is a valid gender
      *
-     * @param gender
+     * @param gender as "male", "female" or "other"
      * @return boolean
      */
     public static boolean isValidGender(String gender) {
-        return gender.equals("male") || gender.equals("female") || gender.equals("other");
+        return (gender.equals("male") || gender.equals("female") || gender.equals("other"));
     }
 
     /**
      * Checks if given integer is a valid weight
      *
-     * @param weight
+     * @param weight in kilos
      * @return boolean
      */
     public static boolean isValidWeight(int weight) {
-        return weight > 0 && weight < 635;
+        return (weight > 0 && weight < 635);
     }
 }

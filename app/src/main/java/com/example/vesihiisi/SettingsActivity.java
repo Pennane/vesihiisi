@@ -21,7 +21,6 @@ import android.widget.Toast;
 public class SettingsActivity extends NavigationBarActivity {
     private EditText editTextAge, editTextWeight;
     private RadioGroup radioGroupGender;
-    private RadioButton radioButtonGender;
 
     private String gender;
     private int age;
@@ -32,31 +31,37 @@ public class SettingsActivity extends NavigationBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        editTextAge = (EditText) findViewById(R.id.editTextNumberAge);
-        editTextWeight = (EditText) findViewById(R.id.editTextNumberWeight);
+        editTextAge = findViewById(R.id.editTextNumberAge);
+        editTextWeight = findViewById(R.id.editTextNumberWeight);
+        radioGroupGender = findViewById(R.id.radioGroupGender);
 
-        radioGroupGender = (RadioGroup) findViewById(R.id.radioGroupGender);
-        int selectedId = radioGroupGender.getCheckedRadioButtonId();
-        radioButtonGender = (RadioButton) findViewById(selectedId);
+        gender = Global.readPreference("gender", "unset");
+        age = Global.readPreference("age", 0);
+        weight = Global.readPreference("weight", 0);
+
+        // If any of the set values are invalid, hide the navigation bar
+        if (Global.isValidAge(age) || !Global.isValidGender(gender) || !Global.isValidWeight(weight)) {
+            hideNavigationBar();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         gender = Global.readPreference("gender", "unset");
         age = Global.readPreference("age", 0);
         weight = Global.readPreference("weight", 0);
 
         editTextAge.setText(Integer.toString(age));
-        editTextWeight.setText(Integer.toString(weight));
+        editTextWeight.setText( Integer.toString(age));
 
-        if (gender.toLowerCase().equals("male")) {
+        if (gender.equalsIgnoreCase("male")) {
             ((RadioButton) radioGroupGender.getChildAt(0)).setChecked(true);
-        } else if (gender.toLowerCase().equals("female")) {
+        } else if (gender.equalsIgnoreCase("female")) {
             ((RadioButton) radioGroupGender.getChildAt(1)).setChecked(true);
-        } else if (gender.toLowerCase().equals("other")) {
+        } else if (gender.equalsIgnoreCase("other")) {
             ((RadioButton) radioGroupGender.getChildAt(2)).setChecked(true);
-        }
-
-        // If any of the set values are invalid, hide the navigation bar
-        if (!Global.isValidAge(age) || !Global.isValidGender(gender) || !Global.isValidWeight(weight)) {
-            hideNavigationBar();
         }
     }
 
@@ -73,18 +78,15 @@ public class SettingsActivity extends NavigationBarActivity {
         Toast toast;
 
         if (!Global.isValidAge(this.age)) {
-            CharSequence text = "Ikä voi olla vain 1-120";
-            toast = Toast.makeText(context, text, duration);
+            toast = Toast.makeText(context, R.string.invalid_age, duration);
             toast.show();
             return false;
         } else if (!Global.isValidWeight(this.weight)) {
-            CharSequence text = "Paino voi olla vain 1-635";
-            toast = Toast.makeText(context, text, duration);
+            toast = Toast.makeText(context, R.string.invalid_weight, duration);
             toast.show();
             return false;
         } else if (!Global.isValidGender(this.gender)) {
-            CharSequence text = "Valitse sukupuoli!";
-            toast = Toast.makeText(context, text, duration);
+            toast = Toast.makeText(context, R.string.invalid_gender, duration);
             toast.show();
             return false;
         }
@@ -94,9 +96,9 @@ public class SettingsActivity extends NavigationBarActivity {
     /**
      * Reads input from the activity and stores those into the activity instance
      */
-    private void readInput() {
+    private void storeInput() {
         int selectedId = radioGroupGender.getCheckedRadioButtonId();
-        radioButtonGender = (RadioButton) findViewById(selectedId);
+        RadioButton radioButtonGender = findViewById(selectedId);
 
         if (radioButtonGender == findViewById(R.id.radioButtonMale)) {
             gender = "male";
@@ -106,8 +108,8 @@ public class SettingsActivity extends NavigationBarActivity {
             gender = "other";
         }
 
-        age = editTextAge.getText().toString().equals("") ? 0 : Integer.parseInt(editTextAge.getText().toString());
-        weight = editTextWeight.getText().toString().equals("") ? 0 : Integer.parseInt(editTextWeight.getText().toString());
+        age = editTextAge.getText().toString().matches("") ? 0 : Integer.parseInt(editTextAge.getText().toString());
+        weight = editTextWeight.getText().toString().matches("") ? 0 : Integer.parseInt(editTextWeight.getText().toString());
     }
 
     /**
@@ -115,13 +117,13 @@ public class SettingsActivity extends NavigationBarActivity {
      * <p>
      * Summons toasts to show status
      *
-     * @param view
+     * @param view of clicked save settings button
      */
     public void saveSettings(View view) {
 
         hideKeyboard(this);
 
-        readInput();
+        storeInput();
 
         if (!isValidInput()) {
             return;
@@ -136,13 +138,10 @@ public class SettingsActivity extends NavigationBarActivity {
         Context context = getApplicationContext();
         int duration = Toast.LENGTH_SHORT;
         Toast toast;
-        CharSequence text = "Asetukset tallennettu!";
-        toast = Toast.makeText(context, text, duration);
+        toast = Toast.makeText(context, R.string.settings_stored, duration);
         toast.show();
 
         // Return the navigation bar
         showNavigationBar();
-
-
     }
 }
