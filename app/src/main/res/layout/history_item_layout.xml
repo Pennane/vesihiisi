@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    @author Arttu Pennanen
+-->
 <TextView
     android:textSize="22sp"
     android:padding="5dp"

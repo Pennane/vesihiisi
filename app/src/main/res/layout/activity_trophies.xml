@@ -1,4 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+    @author Adnan Avni
+    @author Nasiful Nazrul
+-->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -24,27 +27,27 @@
         android:layout_height="112dp"
         android:layout_marginStart="16dp"
         android:background="#E56B0E"
+        android:contentDescription="@string/bronze_trophy_alt"
         app:layout_constraintBottom_toBottomOf="@+id/silverTrophyImageView"
         app:layout_constraintEnd_toStartOf="@+id/silverTrophyImageView"
         app:layout_constraintHorizontal_bias="0.392"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/silverTrophyImageView"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/trophy"
-        android:contentDescription="@string/bronze_trophy_alt" />
+        app:srcCompat="@drawable/trophy" />
 
     <ImageView
         android:id="@+id/silverTrophyImageView"
         android:layout_width="86dp"
         android:layout_height="112dp"
         android:background="#727066"
+        android:contentDescription="@string/silver_trophy_alt"
         app:layout_constraintBottom_toTopOf="@+id/include"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/trophy"
-        android:contentDescription="@string/silver_trophy_alt" />
+        app:srcCompat="@drawable/trophy" />
 
     <ImageView
         android:id="@+id/goldTrophyImageView"
@@ -52,14 +55,14 @@
         android:layout_height="112dp"
         android:layout_marginEnd="16dp"
         android:background="#E5A80E"
+        android:contentDescription="@string/gold_trophy_alt"
         app:layout_constraintBottom_toBottomOf="@+id/silverTrophyImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.558"
         app:layout_constraintStart_toEndOf="@+id/silverTrophyImageView"
         app:layout_constraintTop_toTopOf="@+id/silverTrophyImageView"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/trophy"
-        android:contentDescription="@string/gold_trophy_alt" />
+        app:srcCompat="@drawable/trophy" />
 
     <TextView
         android:id="@+id/textViewBronzeTitle"
