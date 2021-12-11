@@ -1,6 +1,7 @@
 package com.example.vesihiisi;
 
 import static com.example.vesihiisi.Utilities.hideKeyboard;
+import static com.example.vesihiisi.Utilities.safeParseInteger;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -23,8 +24,8 @@ public class SettingsActivity extends NavigationBarActivity {
     private RadioGroup radioGroupGender;
 
     private String gender;
-    private int age;
-    private int weight;
+    private Integer age;
+    private Integer weight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +41,7 @@ public class SettingsActivity extends NavigationBarActivity {
         weight = Global.readPreference("weight", 0);
 
         // If any of the set values are invalid, hide the navigation bar
-        if (Global.isValidAge(age) || !Global.isValidGender(gender) || !Global.isValidWeight(weight)) {
+        if (!Global.isValidAge(age) || !Global.isValidGender(gender) || !Global.isValidWeight(weight)) {
             hideNavigationBar();
         }
     }
@@ -54,7 +55,7 @@ public class SettingsActivity extends NavigationBarActivity {
         weight = Global.readPreference("weight", 0);
 
         editTextAge.setText(Integer.toString(age));
-        editTextWeight.setText( Integer.toString(age));
+        editTextWeight.setText(Integer.toString(age));
 
         if (gender.equalsIgnoreCase("male")) {
             ((RadioButton) radioGroupGender.getChildAt(0)).setChecked(true);
@@ -108,8 +109,8 @@ public class SettingsActivity extends NavigationBarActivity {
             gender = "other";
         }
 
-        age = editTextAge.getText().toString().matches("") ? 0 : Integer.parseInt(editTextAge.getText().toString());
-        weight = editTextWeight.getText().toString().matches("") ? 0 : Integer.parseInt(editTextWeight.getText().toString());
+        age = safeParseInteger(editTextAge.getText().toString());
+        weight = safeParseInteger(editTextWeight.getText().toString());
     }
 
     /**

@@ -74,4 +74,19 @@ public class Utilities {
         SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
         return formatter.format(date);
     }
+
+    /**
+     * Converts string to an integer.
+     * Returns null if the string can not be parsed into a valid integer.
+     *
+     * @param text
+     * @return
+     */
+    public static Integer safeParseInteger(String text) {
+        try {
+            return Integer.parseInt(text);
+        } catch (NumberFormatException e) {
+            return null;
+        }
+    }
 }

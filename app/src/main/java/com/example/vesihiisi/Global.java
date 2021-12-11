@@ -203,7 +203,10 @@ public class Global {
      * @param age in years
      * @return boolean
      */
-    public static boolean isValidAge(int age) {
+    public static boolean isValidAge(Integer age) {
+        if (age == null) {
+            return false;
+        }
         return age >= 1 && age <= 120;
     }
 
@@ -223,7 +226,10 @@ public class Global {
      * @param weight in kilos
      * @return boolean
      */
-    public static boolean isValidWeight(int weight) {
+    public static boolean isValidWeight(Integer weight) {
+        if (weight == null) {
+            return false;
+        }
         return (weight > 0 && weight < 635);
     }
 }

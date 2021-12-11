@@ -4,6 +4,7 @@ import static com.example.vesihiisi.DayData.maxConsumption;
 import static com.example.vesihiisi.DayData.minConsumption;
 import static com.example.vesihiisi.Utilities.dateToFinnishLocaleString;
 import static com.example.vesihiisi.Utilities.hideKeyboard;
+import static com.example.vesihiisi.Utilities.safeParseInteger;
 
 import android.content.Context;
 import android.content.Intent;
@@ -79,9 +80,9 @@ public class DayDataActivity extends NavigationBarActivity {
             return;
         }
 
-        int value = Integer.parseInt(updateConsumptionEditText.getText().toString());
+        Integer value = safeParseInteger(updateConsumptionEditText.getText().toString());
         // If value is invalid, return early
-        if (value < minConsumption || value > maxConsumption) {
+        if (value == null || value < minConsumption || value > maxConsumption) {
             // Show a INVALID toast message
             Toast.makeText(context, R.string.invalid_consumption, duration).show();
             return;
