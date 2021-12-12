@@ -55,7 +55,7 @@ public class SettingsActivity extends NavigationBarActivity {
         weight = Global.readPreference("weight", 0);
 
         editTextAge.setText(Integer.toString(age));
-        editTextWeight.setText(Integer.toString(age));
+        editTextWeight.setText(Integer.toString(weight));
 
         if (gender.equalsIgnoreCase("male")) {
             ((RadioButton) radioGroupGender.getChildAt(0)).setChecked(true);
